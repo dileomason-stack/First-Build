@@ -1,155 +1,1286 @@
 <!DOCTYPE html>
-<!--
-  ================================================================
-  READ THIS BEFORE YOU PASTE ANYTHING
-
-  When Gemini gives you a page, you do NOT paste it into a part of
-  this file. You replace the entire file.
-
-  Click into the editor, press Ctrl+A (Cmd+A on Mac), press Delete,
-  then paste. Everything here is meant to be thrown away.
-
-  Do that only AFTER your live link works. Get the link first.
-  ================================================================
--->
-<html lang="en">
+<html lang="en" data-mode="sport">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My first site</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --navy: #0d1d30;
-    --card: #142a44;
-    --line: #27466a;
-    --aqua: #6de1d7;
-    --text: #ffffff;
-    --muted: #94a9bf;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    background: var(--navy);
-    color: var(--text);
-    font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
-    line-height: 1.6;
-    display: flex;
-    justify-content: center;
-    padding: 6vh 20px;
-  }
-  main { width: 100%; max-width: 640px; }
-  .badge {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--aqua);
-    margin-bottom: 18px;
-  }
-  h1 {
-    font-family: "Unbounded", "Manrope", sans-serif;
-    font-weight: 800;
-    font-size: clamp(38px, 9vw, 68px);
-    letter-spacing: -0.05em;
-    line-height: 1.02;
-    margin: 0 0 8px;
-  }
-  .name {
-    font-family: "Unbounded", "Manrope", sans-serif;
-    font-weight: 600;
-    font-size: clamp(18px, 4vw, 24px);
-    letter-spacing: -0.04em;
-    color: var(--aqua);
-    margin: 0 0 24px;
-  }
-  p.lead { font-size: 18px; color: var(--muted); margin: 0 0 34px; }
-  .card {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 26px 28px;
-    margin-bottom: 18px;
-  }
-  .card h2 {
-    font-family: "Unbounded", "Manrope", sans-serif;
-    font-weight: 600;
-    font-size: 15px;
-    letter-spacing: -0.03em;
-    text-transform: uppercase;
-    color: var(--aqua);
-    margin: 0 0 16px;
-  }
-  ol { margin: 0; padding-left: 20px; }
-  li { margin-bottom: 12px; color: var(--muted); }
-  li:last-child { margin-bottom: 0; }
-  li b { color: var(--text); font-weight: 700; }
-  code {
-    font-family: ui-monospace, "SF Mono", Consolas, monospace;
-    font-size: 0.92em;
-    background: #0a1727;
-    border: 1px solid var(--line);
-    border-radius: 5px;
-    padding: 1px 6px;
-    color: var(--aqua);
-  }
-  a { color: var(--aqua); }
-  footer {
-    margin-top: 30px;
-    font-size: 14px;
-    color: #6e839a;
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alex Mercer | Full-Stack Performance Engineer</title>
+  
+  <!-- Single Google Font Link -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* CSS Variables & Theme Modes */
+    :root {
+      --bg-main: #0a0b0e;
+      --bg-panel: rgba(18, 20, 26, 0.85);
+      --bg-card: #12151e;
+      --border-color: rgba(255, 255, 255, 0.08);
+      
+      /* Sport Mode (Default) - Racing Red */
+      --accent: #ff2a2a;
+      --accent-glow: rgba(255, 42, 42, 0.4);
+      --accent-secondary: #ff6b00;
+      --text-main: #f0f2f5;
+      --text-muted: #8a92a3;
+      --gauge-fill: #ff2a2a;
+      
+      --font-display: 'Orbitron', -apple-system, sans-serif;
+      --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Track Mode - Neon Amber/Yellow */
+    [data-mode="track"] {
+      --accent: #ffb700;
+      --accent-glow: rgba(255, 183, 0, 0.4);
+      --accent-secondary: #ff5500;
+      --gauge-fill: #ffb700;
+    }
+
+    /* Eco Mode - Electric Cyan */
+    [data-mode="eco"] {
+      --accent: #00f0ff;
+      --accent-glow: rgba(0, 240, 255, 0.4);
+      --accent-secondary: #0077ff;
+      --gauge-fill: #00f0ff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+      /* Carbon fiber style background pattern */
+      background-image: 
+        radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0),
+        linear-gradient(to bottom, #07080a, #0d0f14);
+      background-size: 24px 24px, 100% 100%;
+      background-attachment: fixed;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4, .font-display {
+      font-family: var(--font-display);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    /* Dashboard Header Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(10, 11, 14, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand- emblem {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 800;
+      font-size: 1.2rem;
+    }
+
+    .brand-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--accent);
+      clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+      box-shadow: 0 0 12px var(--accent-glow);
+      transition: var(--transition);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: var(--transition);
+      position: relative;
+      padding: 0.25rem 0;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--accent);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--accent);
+      transition: var(--transition);
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Drive Mode Selector */
+    .mode-selector {
+      display: flex;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 3px;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+    }
+
+    .mode-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .mode-btn.active {
+      background: var(--accent);
+      color: #000;
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    /* Hero Section / Cockpit */
+    .hero {
+      min-height: 100vh;
+      padding-top: 100px;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      width: 100%;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      border-radius: 30px;
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1.1;
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title span {
+      color: var(--accent);
+      text-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    .hero-desc {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      max-width: 500px;
+    }
+
+    /* Interactive HUD & Speedometer Canvas */
+    .dashboard-panel {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 2rem;
+      position: relative;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+    }
+
+    .dashboard-panel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+
+    .gauge-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .speedometer {
+      width: 260px;
+      height: 260px;
+      position: relative;
+    }
+
+    .gauge-svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-135deg);
+    }
+
+    .gauge-bg {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.08);
+      stroke-width: 12;
+      stroke-dasharray: 471;
+      stroke-dashoffset: 118;
+    }
+
+    .gauge-progress {
+      fill: none;
+      stroke: var(--gauge-fill);
+      stroke-width: 12;
+      stroke-dasharray: 471;
+      stroke-dashoffset: 471;
+      transition: stroke-dashoffset 0.1s linear, stroke 0.3s ease;
+      filter: drop-shadow(0 0 8px var(--accent-glow));
+    }
+
+    .gauge-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .speed-val {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .speed-unit {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      letter-spacing: 2px;
+    }
+
+    /* Engine Start / Stop Switch */
+    .ignition-box {
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .start-btn {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #2a2d37 0%, #111319 100%);
+      border: 3px solid #3a3f50;
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.8), inset 0 2px 5px rgba(255,255,255,0.1);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .start-btn::after {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 2px dashed var(--border-color);
+      transition: var(--transition);
+    }
+
+    .start-btn:hover {
+      border-color: var(--accent);
+      transform: scale(1.05);
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    .start-btn.running {
+      border-color: var(--accent);
+      background: radial-gradient(circle, var(--accent) 0%, #800 100%);
+      box-shadow: 0 0 30px var(--accent-glow);
+    }
+
+    .start-btn.running::after {
+      border-color: var(--accent);
+      animation: spin 8s linear infinite;
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Specs Grid / Telemetry Section */
+    .section {
+      padding: 6rem 0;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 12px;
+      height: 24px;
+      background: var(--accent);
+      clip-path: polygon(0 0, 100% 0, 60% 100%, 0 100%);
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+      font-size: 0.95rem;
+    }
+
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .spec-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .spec-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .spec-label {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .spec-value {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .spec-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+
+    /* Technical Skills / Performance Tuning */
+    .skills-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .skill-group {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2rem;
+    }
+
+    .skill-group h3 {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: var(--accent);
+    }
+
+    .skill-bar-item {
+      margin-bottom: 1.25rem;
+    }
+
+    .skill-info {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .skill-track {
+      height: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .skill-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent-secondary), var(--accent));
+      border-radius: 4px;
+      width: 0%;
+      transition: width 1s ease-in-out;
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    /* Garage / Project Showroom */
+    .garage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+      transform: translateY(-6px);
+    }
+
+    .project-header {
+      height: 180px;
+      background: #181b26;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--border-color);
+      /* Grid blueprint graphic */
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 16px 16px;
+    }
+
+    .project-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      font-weight: 700;
+    }
+
+    .project-icon-art {
+      width: 64px;
+      height: 64px;
+      stroke: var(--accent);
+      stroke-width: 1.5;
+      fill: none;
+      filter: drop-shadow(0 0 10px var(--accent-glow));
+    }
+
+    .project-body {
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tech-tag {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    .btn-primary:hover {
+      background: #fff;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Pit Stop Timeline / Experience */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background: var(--border-color);
+    }
+
+    .timeline-item {
+      margin-bottom: 2.5rem;
+      position: relative;
+      width: 50%;
+      padding-right: 2rem;
+    }
+
+    .timeline-item:nth-child(even) {
+      margin-left: 50%;
+      padding-right: 0;
+      padding-left: 2rem;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      right: -7px;
+      top: 0;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--bg-main);
+      border: 2px solid var(--accent);
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    .timeline-item:nth-child(even) .timeline-dot {
+      right: auto;
+      left: -7px;
+    }
+
+    .timeline-content {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    .timeline-date {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-role {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .timeline-company {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Telemetry Contact Dashboard */
+    .contact-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 3rem;
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-input, .form-textarea {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 0.8rem 1rem;
+      color: var(--text-main);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+
+    .form-input:focus, .form-textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-desc {
+        margin: 0 auto 2rem auto;
+      }
+      .skills-container {
+        grid-template-columns: 1fr;
+      }
+      .timeline::before {
+        left: 0;
+      }
+      .timeline-item, .timeline-item:nth-child(even) {
+        width: 100%;
+        margin-left: 0;
+        padding-left: 1.5rem;
+        padding-right: 0;
+      }
+      .timeline-dot, .timeline-item:nth-child(even) .timeline-dot {
+        left: -6px;
+      }
+      .nav-links {
+        display: none; /* Mobile menu can be simplified */
+      }
+    }
+  </style>
 </head>
 <body>
-<main>
 
-  <span class="badge">Cal Poly Vibe Coding &middot; Session 01</span>
+  <!-- Dashboard Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand-emblem">
+        <div class="brand-icon"></div>
+        <span>AM//PERFORMANCE</span>
+      </a>
 
-  <h1>It&rsquo;s live.</h1>
+      <ul class="nav-links">
+        <li><a href="#cockpit" class="active">COCKPIT</a></li>
+        <li><a href="#telemetry">SPECS</a></li>
+        <li><a href="#tuning">TUNING</a></li>
+        <li><a href="#garage">GARAGE</a></li>
+        <li><a href="#pitstop">PIT STOP</a></li>
+        <li><a href="#launch">LAUNCH</a></li>
+      </ul>
 
-  <!-- Step 5: change the name below to yours, then commit. -->
-  <p class="name">Built by Mason Di Leo</p>
+      <!-- Drive Mode Switcher -->
+      <div class="mode-selector">
+        <button class="mode-btn active" onclick="setDriveMode('sport')">SPORT</button>
+        <button class="mode-btn" onclick="setDriveMode('track')">TRACK</button>
+        <button class="mode-btn" onclick="setDriveMode('eco')">ECO</button>
+      </div>
+    </div>
+  </header>
 
-  <p class="lead">
-    This page is on the internet. Anyone you send this link to can open it,
-    on any device, right now. You made that happen in about five minutes.
-  </p>
+  <!-- Hero Section / Cockpit -->
+  <section class="hero" id="cockpit">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-status">
+            <span class="status-dot"></span>
+            SYSTEMS ONLINE // ENGINE READY
+          </div>
+          <h1 class="hero-title">High Performance<br><span>Software Engineer</span></h1>
+          <p class="hero-desc">Architecting lightning-fast web applications, scalable backend infrastructure, and precision-engineered digital experiences.</p>
+          <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+            <a href="#garage" class="btn btn-primary">VIEW GARAGE</a>
+            <a href="#launch" class="btn btn-outline">SCHEDULE TELEMETRY</a>
+          </div>
+        </div>
 
-  <div class="card">
-    <h2>Three things, in this order</h2>
-    <ol>
-      <li><b>Put your name on it.</b> Edit <code>index.html</code>, change
-        Mason Di Leo above, commit, refresh this page.</li>
-      <li><b>Submit this link.</b> Go to
-        <a href="https://www.calpolyvibecoding.com/">calpolyvibecoding.com</a>,
-        make an account, and paste this URL in. That is how you get counted,
-        and how Claude seats get assigned.</li>
-      <li><b>Then build.</b> Open Gemini, get a page, and replace this entire
-        file with it.</li>
-    </ol>
-  </div>
+        <!-- Dashboard Instrument Cluster -->
+        <div class="dashboard-panel">
+          <div class="gauge-wrapper">
+            <div class="speedometer">
+              <svg class="gauge-svg" viewBox="0 0 200 200">
+                <circle class="gauge-bg" cx="100" cy="100" r="75"></circle>
+                <circle class="gauge-progress" id="rpmGauge" cx="100" cy="100" r="75"></circle>
+              </svg>
+              <div class="gauge-center">
+                <div class="speed-val" id="speedDisplay">0</div>
+                <div class="speed-unit">KM/H // RPM</div>
+              </div>
+            </div>
 
-  <div class="card">
-    <h2>How to replace this page</h2>
-    <ol>
-      <li>Copy what Gemini gives you with the <b>copy button</b> on the code
-        block. Do not click and drag.</li>
-      <li>Open <code>index.html</code> here and click the pencil icon.</li>
-      <li><b>Ctrl+A</b> (<b>Cmd+A</b> on Mac), then <b>Delete</b>. All of it.
-        Yes, really.</li>
-      <li>Paste, commit, refresh.</li>
-    </ol>
-  </div>
+            <!-- Start / Stop Engine Button -->
+            <div class="ignition-box">
+              <button class="start-btn" id="startBtn" onclick="toggleEngine()">
+                <span>ENGINE</span>
+                <span style="color: var(--accent); margin-top:2px;">START</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- Spec Sheet / Telemetry -->
+  <section class="section" id="telemetry">
+    <div class="container">
+      <h2 class="section-title">Vehicle Telemetry</h2>
+      <p class="section-subtitle">Core engine specs and performance metrics</p>
+
+      <div class="specs-grid">
+        <div class="spec-card">
+          <div class="spec-label">
+            <span>ENGINE ARCHITECTURE</span>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="spec-value">FULL STACK</div>
+          <div class="spec-desc">React, Node.js, TypeScript, Python</div>
+        </div>
+
+        <div class="spec-card">
+          <div class="spec-label">
+            <span>HORSEPOWER / EFFICIENCY</span>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <div class="spec-value">99.9%</div>
+          <div class="spec-desc">Uptime & High Availability Standard</div>
+        </div>
+
+        <div class="spec-card">
+          <div class="spec-label">
+            <span>ACCELERATION (0-100)</span>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/></svg>
+          </div>
+          <div class="spec-value">&lt; 100ms</div>
+          <div class="spec-desc">Sub-second API response times</div>
+        </div>
+
+        <div class="spec-card">
+          <div class="spec-label">
+            <span>TRANSMISSION</span>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>
+          </div>
+          <div class="spec-value">6-SPEED AGILE</div>
+          <div class="spec-desc">CI/CD Automated Deployment Pipelines</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Performance Tuning / Skills -->
+  <section class="section" id="tuning">
+    <div class="container">
+      <h2 class="section-title">Performance Tuning</h2>
+      <p class="section-subtitle">Calibrated technical skill tree</p>
+
+      <div class="skills-container">
+        <!-- Group 1 -->
+        <div class="skill-group">
+          <h3>// POWERTRAIN (FRONTEND)</h3>
+          
+          <div class="skill-bar-item">
+            <div class="skill-info">
+              <span>REACT / NEXT.JS</span>
+              <span>95%</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-fill" data-width="95%"></div>
+            </div>
+          </div>
+
+          <div class="skill-bar-item">
+            <div class="skill-info">
+              <span>TYPESCRIPT</span>
+              <span>90%</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-fill" data-width="90%"></div>
+            </div>
+          </div>
+
+          <div class="skill-bar-item">
+            <div class="skill-info">
+              <span>THREE.JS / WEBGL / CSS3</span>
+              <span>85%</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-fill" data-width="85%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Group 2 -->
+        <div class="skill-group">
+          <h3>// TURBOCHARGER (BACKEND & INFRA)</h3>
+          
+          <div class="skill-bar-item">
+            <div class="skill-info">
+              <span>NODE.JS / EXPRESS</span>
+              <span>92%</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-fill" data-width="92%"></div>
+            </div>
+          </div>
+
+          <div class="skill-bar-item">
+            <div class="skill-info">
+              <span>POSTGRESQL / REDIS</span>
+              <span>88%</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-fill" data-width="88%"></div>
+            </div>
+          </div>
+
+          <div class="skill-bar-item">
+            <div class="skill-info">
+              <span>DOCKER / AWS KUBERNETES</span>
+              <span>82%</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-fill" data-width="82%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Garage / Project Showroom -->
+  <section class="section" id="garage">
+    <div class="container">
+      <h2 class="section-title">The Garage</h2>
+      <p class="section-subtitle">Custom builds and engineered web solutions</p>
+
+      <div class="garage-grid">
+        <!-- Project 1 -->
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-badge">TWIN-TURBO</span>
+            <svg class="project-icon-art" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Apex Telemetry Platform</h3>
+            <p class="project-desc">Real-time automotive data streaming platform visualizing lap times, tire degradation, and GPS engine analytics.</p>
+            <div class="project-tech">
+              <span class="tech-tag">REACT</span>
+              <span class="tech-tag">WEBSOCKETS</span>
+              <span class="tech-tag">GO</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn btn-primary">LAUNCH PROJECT</a>
+              <a href="#" class="btn btn-outline">SPECS</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-badge">SUPERCHARGED</span>
+            <svg class="project-icon-art" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">NitroDB Cache Engine</h3>
+            <p class="project-desc">Ultra-low latency in-memory key-value store optimized for high-concurrency microservices.</p>
+            <div class="project-tech">
+              <span class="tech-tag">RUST</span>
+              <span class="tech-tag">C++</span>
+              <span class="tech-tag">REDIS PROTOCOL</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn btn-primary">VIEW CODE</a>
+              <a href="#" class="btn btn-outline">BENCHMARKS</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-badge">ELECTRIC</span>
+            <svg class="project-icon-art" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">HyperDrive Configurator</h3>
+            <p class="project-desc">Interactive 3D vehicle customization tool allowing users to build and render custom EV supercars in real-time.</p>
+            <div class="project-tech">
+              <span class="tech-tag">THREE.JS</span>
+              <span class="tech-tag">WEBGL</span>
+              <span class="tech-tag">TAILWIND</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn btn-primary">3D BUILDER</a>
+              <a href="#" class="btn btn-outline">SOURCE</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Track Record / Experience -->
+  <section class="section" id="pitstop">
+    <div class="container">
+      <h2 class="section-title">Track Record</h2>
+      <p class="section-subtitle">Pit stops along my career journey</p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">2023 - PRESENT</div>
+            <div class="timeline-role">Lead Performance Architect</div>
+            <div class="timeline-company">Velocity Tech Labs</div>
+            <p style="font-size:0.85rem; color: var(--text-muted);">Spearheaded core infrastructure optimization, decreasing load speeds by 45% across global endpoints.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">2021 - 2023</div>
+            <div class="timeline-role">Senior Full-Stack Engineer</div>
+            <div class="timeline-company">RPM Digital Solutions</div>
+            <p style="font-size:0.85rem; color: var(--text-muted);">Engineered high-frequency transaction pipelines and microservice architectures handling 1M+ daily calls.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">2019 - 2021</div>
+            <div class="timeline-role">Software Engineer</div>
+            <div class="timeline-company">Apex Systems</div>
+            <p style="font-size:0.85rem; color: var(--text-muted);">Developed modern React dashboards and real-time WebSocket telemetry interfaces for IoT clients.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Launch Control / Contact -->
+  <section class="section" id="launch">
+    <div class="container">
+      <h2 class="section-title" style="justify-content: center;">Launch Control</h2>
+      <p class="section-subtitle" style="text-align: center;">Initiate contact and start a new build together</p>
+
+      <div class="contact-card">
+        <form onsubmit="event.preventDefault(); triggerLaunch();">
+          <div class="form-group">
+            <label class="form-label">// DRIVER / CLIENT NAME</label>
+            <input type="text" class="form-input" placeholder="e.g. Carroll Shelby" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">// TELEMETRY / EMAIL ADDRESS</label>
+            <input type="email" class="form-input" placeholder="driver@grid.com" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">// MISSION PARAMETERS / MESSAGE</label>
+            <textarea class="form-textarea" rows="4" placeholder="Detail your project specifications or performance targets..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size:0.9rem;" id="launchBtn">
+            ENGAGE LAUNCH CONTROL
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    Nothing on this page is precious. It exists so the link has something to
-    show before you have something of your own.
+    <div class="container">
+      <p>© 2026 ALEX MERCER // BUILT FOR HIGH SPEED & PRECISION</p>
+    </div>
   </footer>
 
-</main>
+  <!-- Inline Audio Synthesizer & Dashboard Scripting -->
+  <script>
+    /* Web Audio API Engine Sound Synthesizer */
+    let audioCtx = null;
+    let isEngineRunning = false;
+    let rpmInterval = null;
+    let currentRpm = 0;
+
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+    }
+
+    // Synthesizes an engine roar & idle sound without external audio files
+    function playEngineSound() {
+      if (!audioCtx) return;
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
+      // Oscillator for engine rumble
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      
+      osc.type = 'sawtooth';
+      
+      // Rev effect ramping
+      const now = audioCtx.currentTime;
+      osc.frequency.setValueAtTime(45, now);
+      osc.frequency.exponentialRampToValueAtTime(320, now + 0.6);
+      osc.frequency.exponentialRampToValueAtTime(90, now + 2.0);
+
+      gain.gain.setValueAtTime(0.01, now);
+      gain.gain.linearRampToValueAtTime(0.2, now + 0.3);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 2.0);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      osc.start(now);
+      osc.stop(now + 2.0);
+    }
+
+    function toggleEngine() {
+      initAudio();
+      const startBtn = document.getElementById('startBtn');
+      const speedDisplay = document.getElementById('speedDisplay');
+      const gauge = document.getElementById('rpmGauge');
+
+      isEngineRunning = !isEngineRunning;
+
+      if (isEngineRunning) {
+        startBtn.classList.add('running');
+        playEngineSound();
+
+        // Animate gauge & speedometer RPM bounce
+        let speed = 0;
+        clearInterval(rpmInterval);
+        rpmInterval = setInterval(() => {
+          if (speed < 280) {
+            speed += Math.floor(Math.random() * 25) + 10;
+            if (speed > 280) speed = 280;
+          } else {
+            // High RPM idle wobble
+            speed = 270 + Math.floor(Math.random() * 15);
+          }
+          
+          speedDisplay.innerText = speed;
+          // Calculate gauge offset (max dashoffset 471, active arc range 353)
+          const offset = 471 - (speed / 300) * 353;
+          gauge.style.strokeDashoffset = offset;
+        }, 80);
+
+      } else {
+        startBtn.classList.remove('running');
+        clearInterval(rpmInterval);
+        
+        // Reset Gauge
+        speedDisplay.innerText = "0";
+        gauge.style.strokeDashoffset = 471;
+      }
+    }
+
+    /* Drive Mode Selector */
+    function setDriveMode(mode) {
+      document.documentElement.setAttribute('data-mode', mode);
+      
+      const buttons = document.querySelectorAll('.mode-btn');
+      buttons.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.innerText.toLowerCase() === mode) {
+          btn.classList.add('active');
+        }
+      });
+    }
+
+    /* Animate Skills on Scroll */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const fills = entry.target.querySelectorAll('.skill-fill');
+          fills.forEach(fill => {
+            fill.style.width = fill.getAttribute('data-width');
+          });
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.skill-group').forEach(group => {
+      observer.observe(group);
+    });
+
+    /* Contact Form Launch engage */
+    function triggerLaunch() {
+      initAudio();
+      if (audioCtx) {
+        playEngineSound();
+      }
+      const btn = document.getElementById('launchBtn');
+      btn.innerText = "LAUNCH SEQUENCE SUCCESSFUL!";
+      btn.style.background = "#00f0ff";
+      btn.style.color = "#000";
+      setTimeout(() => {
+        btn.innerText = "ENGAGE LAUNCH CONTROL";
+        btn.style.background = "var(--accent)";
+      }, 3000);
+    }
+  </script>
 </body>
 </html>
