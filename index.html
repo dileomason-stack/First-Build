@@ -3,48 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alex Mercer | Full-Stack Performance Engineer</title>
+  <title>Alex Mercer | Bespoke Full-Stack Engineer</title>
   
-  <!-- Single Google Font Link -->
+  <!-- Single Google Font Link - Orbitron replaced with retro-classic high-end typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Montserrat:ital,wght@0,300;0,500;0,700;0,800;1,400&display=swap" rel="stylesheet">
 
   <style>
-    /* CSS Variables & Theme Modes */
+    /* CSS Variables & Singer Restomod Color Palette */
     :root {
-      --bg-main: #0a0b0e;
-      --bg-panel: rgba(18, 20, 26, 0.85);
-      --bg-card: #12151e;
-      --border-color: rgba(255, 255, 255, 0.08);
+      /* Warm Dark Espresso / Charcoal Chassis */
+      --bg-main: #141312;
+      --bg-panel: rgba(26, 24, 22, 0.92);
+      --bg-card: #1c1a17;
+      --bg-card-alt: #24211d;
+      --border-color: rgba(212, 175, 55, 0.18);
       
-      /* Sport Mode (Default) - Racing Red */
-      --accent: #ff2a2a;
-      --accent-glow: rgba(255, 42, 42, 0.4);
-      --accent-secondary: #ff6b00;
-      --text-main: #f0f2f5;
-      --text-muted: #8a92a3;
-      --gauge-fill: #ff2a2a;
+      /* Singer Iconic Accents: Warm Brass/Gold & Bahama Yellow / Singer Orange */
+      --accent: #e56a17;             /* Classic Porsche Warm Orange */
+      --accent-secondary: #d4af37;   /* Brushed Brass / Gold Emblem Accent */
+      --accent-glow: rgba(229, 106, 23, 0.35);
       
-      --font-display: 'Orbitron', -apple-system, sans-serif;
-      --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --text-main: #f4efea;          /* Warm Cream Text */
+      --text-muted: #a39c93;         /* Vintage Parchment Muted Text */
+      
+      /* Gauge Face Palette (Parchment & Warm White with Black Numerals) */
+      --gauge-face: #f0ebe1;
+      --gauge-rim: #2d2a26;
+      --gauge-gold: #c5a059;
+      --gauge-needle: #ff3b00;
+      
+      --font-display: 'Cinzel', serif;
+      --font-body: 'Montserrat', sans-serif;
+      --transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    /* Track Mode - Neon Amber/Yellow */
+    /* Track / Lightweight Spec */
     [data-mode="track"] {
-      --accent: #ffb700;
-      --accent-glow: rgba(255, 183, 0, 0.4);
-      --accent-secondary: #ff5500;
-      --gauge-fill: #ffb700;
+      --accent: #d92b2b;              /* Guards Red */
+      --accent-secondary: #e6b800;
+      --accent-glow: rgba(217, 43, 43, 0.35);
     }
 
-    /* Eco Mode - Electric Cyan */
-    [data-mode="eco"] {
-      --accent: #00f0ff;
-      --accent-glow: rgba(0, 240, 255, 0.4);
-      --accent-secondary: #0077ff;
-      --gauge-fill: #00f0ff;
+    /* Touring / Classic Spec */
+    [data-mode="touring"] {
+      --accent: #2e7d52;              /* Irish Green */
+      --accent-secondary: #d4af37;
+      --accent-glow: rgba(46, 125, 82, 0.35);
     }
 
     * {
@@ -59,11 +65,11 @@
       font-family: var(--font-body);
       line-height: 1.6;
       overflow-x: hidden;
-      /* Carbon fiber style background pattern */
+      /* Subtle Leather Woven Pattern */
       background-image: 
-        radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0),
-        linear-gradient(to bottom, #07080a, #0d0f14);
-      background-size: 24px 24px, 100% 100%;
+        radial-gradient(rgba(212, 175, 55, 0.04) 1px, transparent 0),
+        linear-gradient(to bottom, #11100f, #181614);
+      background-size: 20px 20px, 100% 100%;
       background-attachment: fixed;
     }
 
@@ -71,60 +77,70 @@
     h1, h2, h3, h4, .font-display {
       font-family: var(--font-display);
       text-transform: uppercase;
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
     }
 
-    /* Dashboard Header Navigation */
+    /* Header Navigation */
     header {
       position: fixed;
       top: 0;
       width: 100%;
       z-index: 100;
-      background: rgba(10, 11, 14, 0.85);
-      backdrop-filter: blur(12px);
+      background: rgba(20, 19, 18, 0.9);
+      backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-color);
     }
 
     .nav-container {
-      max-width: 1200px;
+      max-width: 1240px;
       margin: 0 auto;
-      padding: 1rem 1.5rem;
+      padding: 1.2rem 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .brand- emblem {
+    .brand-emblem {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       text-decoration: none;
       color: var(--text-main);
       font-weight: 800;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
+      letter-spacing: 3px;
+      font-family: var(--font-display);
     }
 
-    .brand-icon {
-      width: 32px;
-      height: 32px;
-      background: var(--accent);
-      clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
-      box-shadow: 0 0 12px var(--accent-glow);
-      transition: var(--transition);
+    /* Singer Brass Badge Styling */
+    .brand-badge {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ecd084 0%, #a27c28 100%);
+      border: 2px solid var(--accent-secondary);
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.3), inset 0 1px 2px rgba(255,255,255,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1a140a;
+      font-weight: 900;
+      font-size: 0.75rem;
     }
 
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 2.2rem;
       list-style: none;
     }
 
     .nav-links a {
       color: var(--text-muted);
       text-decoration: none;
-      font-family: var(--font-display);
-      font-size: 0.85rem;
-      font-weight: 600;
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 2px;
       transition: var(--transition);
       position: relative;
       padding: 0.25rem 0;
@@ -137,8 +153,9 @@
     .nav-links a::after {
       content: '';
       position: absolute;
-      bottom: 0;
-      left: 0;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%);
       width: 0%;
       height: 2px;
       background: var(--accent);
@@ -146,49 +163,52 @@
       box-shadow: 0 0 8px var(--accent);
     }
 
-    .nav-links a:hover::after {
+    .nav-links a:hover::after, .nav-links a.active::after {
       width: 100%;
     }
 
-    /* Drive Mode Selector */
+    /* Drive Mode Selector - Metallic Toggle Bar */
     .mode-selector {
       display: flex;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 3px;
-      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 4px;
+      border-radius: 30px;
       border: 1px solid var(--border-color);
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.8);
     }
 
     .mode-btn {
       background: transparent;
       border: none;
       color: var(--text-muted);
-      font-family: var(--font-display);
-      font-size: 0.7rem;
-      font-weight: 700;
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
       padding: 6px 14px;
-      border-radius: 16px;
+      border-radius: 20px;
       cursor: pointer;
       transition: var(--transition);
     }
 
     .mode-btn.active {
-      background: var(--accent);
-      color: #000;
-      box-shadow: 0 0 10px var(--accent-glow);
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
+      color: #0d0c0a;
+      box-shadow: 0 2px 10px var(--accent-glow);
     }
 
-    /* Hero Section / Cockpit */
+    /* Hero Section / Dashboard Cockpit */
     .hero {
       min-height: 100vh;
-      padding-top: 100px;
+      padding-top: 110px;
+      padding-bottom: 3rem;
       display: flex;
       align-items: center;
       position: relative;
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1240px;
       margin: 0 auto;
       padding: 0 1.5rem;
       width: 100%;
@@ -196,326 +216,397 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1.1fr;
       gap: 3rem;
       align-items: center;
     }
 
-    .hero-status {
+    .hero-tag {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border-color);
-      border-radius: 30px;
+      gap: 10px;
+      padding: 6px 16px;
+      background: rgba(212, 175, 55, 0.06);
+      border: 1px solid var(--accent-secondary);
+      border-radius: 4px;
       font-family: var(--font-display);
       font-size: 0.75rem;
-      color: var(--accent);
+      color: var(--accent-secondary);
       margin-bottom: 1.5rem;
+      letter-spacing: 2px;
     }
 
-    .status-dot {
-      width: 8px;
-      height: 8px;
+    .tag-dot {
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
       background: var(--accent);
-      box-shadow: 0 0 8px var(--accent);
-      animation: pulse 1.5s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.8); }
+      box-shadow: 0 0 6px var(--accent);
     }
 
     .hero-title {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      line-height: 1.1;
-      font-weight: 900;
-      margin-bottom: 1rem;
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+      line-height: 1.15;
+      font-weight: 800;
+      margin-bottom: 1.2rem;
+      letter-spacing: 1px;
     }
 
     .hero-title span {
       color: var(--accent);
-      text-shadow: 0 0 20px var(--accent-glow);
+      background: linear-gradient(135deg, var(--accent) 30%, var(--accent-secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .hero-desc {
       color: var(--text-muted);
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       margin-bottom: 2rem;
-      max-width: 500px;
+      max-width: 520px;
+      font-weight: 400;
+      line-height: 1.7;
     }
 
-    /* Interactive HUD & Speedometer Canvas */
-    .dashboard-panel {
-      background: var(--bg-panel);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      padding: 2rem;
+    /* Classic 5-Gauge Porsche Instrument Cluster */
+    .porsche-cluster {
+      background: #171513;
+      border: 2px solid var(--gauge-rim);
+      border-radius: 24px;
+      padding: 2.2rem 1.5rem;
       position: relative;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(10px);
+      box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.8),
+        inset 0 0 30px rgba(0,0,0,0.9),
+        0 0 0 1px rgba(212, 175, 55, 0.2);
+      /* Woven leather inlay behind gauges */
+      background-image: radial-gradient(rgba(212, 175, 55, 0.08) 1px, transparent 0);
+      background-size: 12px 12px;
     }
 
-    .dashboard-panel::before {
-      content: '';
+    .porsche-cluster::before {
+      content: 'RESTOMOD INSTRUMENTATION // SPECS & TELEMETRY';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-    }
-
-    .gauge-wrapper {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .speedometer {
-      width: 260px;
-      height: 260px;
-      position: relative;
-    }
-
-    .gauge-svg {
-      width: 100%;
-      height: 100%;
-      transform: rotate(-135deg);
-    }
-
-    .gauge-bg {
-      fill: none;
-      stroke: rgba(255, 255, 255, 0.08);
-      stroke-width: 12;
-      stroke-dasharray: 471;
-      stroke-dashoffset: 118;
-    }
-
-    .gauge-progress {
-      fill: none;
-      stroke: var(--gauge-fill);
-      stroke-width: 12;
-      stroke-dasharray: 471;
-      stroke-dashoffset: 471;
-      transition: stroke-dashoffset 0.1s linear, stroke 0.3s ease;
-      filter: drop-shadow(0 0 8px var(--accent-glow));
-    }
-
-    .gauge-center {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-    }
-
-    .speed-val {
+      top: 12px;
+      left: 24px;
       font-family: var(--font-display);
-      font-size: 3.5rem;
-      font-weight: 900;
-      line-height: 1;
-    }
-
-    .speed-unit {
-      font-family: var(--font-display);
-      font-size: 0.8rem;
+      font-size: 0.65rem;
       color: var(--text-muted);
       letter-spacing: 2px;
     }
 
-    /* Engine Start / Stop Switch */
-    .ignition-box {
-      margin-top: 1.5rem;
+    .gauges-container {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 1.5rem;
+      gap: 12px;
+      margin-top: 1rem;
+    }
+
+    /* Gauge Base Styles */
+    .gauge {
+      border-radius: 50%;
+      position: relative;
+      background: radial-gradient(circle, #221f1c 0%, #100f0e 100%);
+      border: 4px solid #332f2a;
+      box-shadow: 
+        0 0 0 2px var(--gauge-gold),
+        0 10px 20px rgba(0,0,0,0.8),
+        inset 0 2px 8px rgba(0,0,0,0.9);
+      flex-shrink: 0;
+    }
+
+    /* Secondary Side Gauges */
+    .gauge-sm {
+      width: 85px;
+      height: 85px;
+    }
+
+    .gauge-md {
+      width: 110px;
+      height: 110px;
+    }
+
+    /* Iconic Singer Center Tachometer (Orange / Bahama Yellow Dial) */
+    .gauge-lg {
+      width: 155px;
+      height: 155px;
+      background: radial-gradient(circle, #2b251d 0%, #17130e 100%);
+      border: 5px solid #3d3730;
+      box-shadow: 
+        0 0 0 3px var(--accent-secondary),
+        0 15px 30px rgba(0,0,0,0.9),
+        inset 0 4px 15px rgba(0,0,0,0.8);
+      z-index: 2;
+    }
+
+    .gauge-inner {
+      position: absolute;
+      inset: 6px;
+      border-radius: 50%;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .gauge-lg .gauge-inner {
+      border: 1px solid rgba(229, 106, 23, 0.4);
+      background: radial-gradient(circle, rgba(229, 106, 23, 0.05) 0%, transparent 70%);
+    }
+
+    .gauge-title {
+      font-family: var(--font-display);
+      font-size: 0.55rem;
+      color: var(--accent-secondary);
+      letter-spacing: 1px;
+      margin-bottom: 2px;
+    }
+
+    .gauge-lg .gauge-title {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .gauge-val {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--gauge-face);
+    }
+
+    .gauge-lg .gauge-val {
+      font-size: 2rem;
+      color: var(--text-main);
+      text-shadow: 0 0 10px rgba(229, 106, 23, 0.4);
+    }
+
+    .gauge-unit {
+      font-size: 0.55rem;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* Needle graphics */
+    .gauge-needle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 2px;
+      height: 42%;
+      background: var(--gauge-needle);
+      transform-origin: bottom center;
+      transform: translate(-50%, -100%) rotate(-110deg);
+      transition: transform 0.1s linear;
+      box-shadow: 0 0 6px var(--gauge-needle);
+      border-radius: 2px;
+    }
+
+    .gauge-needle::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent-secondary);
+      border: 2px solid #000;
+    }
+
+    /* Ignition Switch Controls */
+    .ignition-box {
+      margin-top: 1.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1rem;
+    }
+
+    .ignition-title {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 1.5px;
     }
 
     .start-btn {
-      width: 90px;
-      height: 90px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
-      background: radial-gradient(circle, #2a2d37 0%, #111319 100%);
-      border: 3px solid #3a3f50;
-      color: #fff;
+      background: radial-gradient(circle, #3d3730 0%, #1a1714 100%);
+      border: 3px solid var(--accent-secondary);
+      color: var(--text-main);
       font-family: var(--font-display);
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 800;
       cursor: pointer;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.8), inset 0 2px 5px rgba(255,255,255,0.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.8), inset 0 2px 4px rgba(255,255,255,0.2);
       transition: var(--transition);
       position: relative;
     }
 
-    .start-btn::after {
-      content: '';
-      position: absolute;
-      inset: -6px;
-      border-radius: 50%;
-      border: 2px dashed var(--border-color);
-      transition: var(--transition);
-    }
-
     .start-btn:hover {
       border-color: var(--accent);
-      transform: scale(1.05);
+      transform: scale(1.04);
       box-shadow: 0 0 20px var(--accent-glow);
     }
 
     .start-btn.running {
       border-color: var(--accent);
-      background: radial-gradient(circle, var(--accent) 0%, #800 100%);
+      background: radial-gradient(circle, var(--accent) 0%, #7a2d00 100%);
       box-shadow: 0 0 30px var(--accent-glow);
+      color: #fff;
     }
 
-    .start-btn.running::after {
-      border-color: var(--accent);
-      animation: spin 8s linear infinite;
-    }
-
-    @keyframes spin {
-      100% { transform: rotate(360deg); }
-    }
-
-    /* Specs Grid / Telemetry Section */
+    /* Sections */
     .section {
       padding: 6rem 0;
       border-top: 1px solid var(--border-color);
     }
 
+    .section-header {
+      margin-bottom: 3rem;
+    }
+
     .section-title {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
+      font-size: 2.2rem;
+      color: var(--text-main);
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 16px;
     }
 
     .section-title::before {
       content: '';
       display: inline-block;
-      width: 12px;
-      height: 24px;
+      width: 8px;
+      height: 28px;
       background: var(--accent);
-      clip-path: polygon(0 0, 100% 0, 60% 100%, 0 100%);
+      border-radius: 2px;
     }
 
     .section-subtitle {
       color: var(--text-muted);
-      margin-bottom: 3rem;
+      margin-top: 0.4rem;
       font-size: 0.95rem;
+      letter-spacing: 1px;
     }
 
+    /* Specs & Telemetry Grid */
     .specs-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.8rem;
     }
 
     .spec-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: 12px;
-      padding: 1.5rem;
+      padding: 1.8rem;
       position: relative;
-      overflow: hidden;
       transition: var(--transition);
+      /* Subtle Brass Line Accent */
+      box-shadow: inset 0 1px 0 rgba(212, 175, 55, 0.15);
     }
 
     .spec-card:hover {
       border-color: var(--accent);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 var(--accent);
     }
 
     .spec-label {
       font-family: var(--font-display);
       font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
+      color: var(--accent-secondary);
+      margin-bottom: 0.8rem;
       display: flex;
       justify-content: space-between;
+      letter-spacing: 1.5px;
     }
 
     .spec-value {
       font-family: var(--font-display);
-      font-size: 1.6rem;
-      font-weight: 700;
+      font-size: 1.7rem;
+      font-weight: 800;
       color: var(--text-main);
     }
 
     .spec-desc {
       font-size: 0.85rem;
       color: var(--text-muted);
-      margin-top: 0.5rem;
+      margin-top: 0.6rem;
     }
 
-    /* Technical Skills / Performance Tuning */
+    /* Performance Tuning / Technical Skills */
     .skills-container {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+      gap: 2.5rem;
     }
 
     .skill-group {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 2rem;
+      border-radius: 16px;
+      padding: 2.2rem;
     }
 
     .skill-group h3 {
       font-size: 1.1rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.8rem;
       color: var(--accent);
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.8rem;
     }
 
     .skill-bar-item {
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.4rem;
     }
 
     .skill-info {
       display: flex;
       justify-content: space-between;
-      font-family: var(--font-display);
-      font-size: 0.85rem;
-      margin-bottom: 0.4rem;
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
     }
 
     .skill-track {
-      height: 8px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 4px;
+      height: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 20px;
       overflow: hidden;
-      position: relative;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      padding: 1px;
     }
 
     .skill-fill {
       height: 100%;
       background: linear-gradient(90deg, var(--accent-secondary), var(--accent));
-      border-radius: 4px;
+      border-radius: 20px;
       width: 0%;
-      transition: width 1s ease-in-out;
+      transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
       box-shadow: 0 0 10px var(--accent-glow);
     }
 
-    /* Garage / Project Showroom */
+    /* Garage / Bespoke Projects */
     .garage-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+      gap: 2.2rem;
     }
 
     .project-card {
@@ -530,22 +621,24 @@
 
     .project-card:hover {
       border-color: var(--accent);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
       transform: translateY(-6px);
     }
 
     .project-header {
-      height: 180px;
-      background: #181b26;
+      height: 190px;
+      background: var(--bg-card-alt);
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       border-bottom: 1px solid var(--border-color);
-      /* Grid blueprint graphic */
+      /* houndstooth vintage texture preview */
       background-image: 
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+        linear-gradient(45deg, rgba(212, 175, 55, 0.05) 25%, transparent 25%), 
+        linear-gradient(-45deg, rgba(212, 175, 55, 0.05) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(212, 175, 55, 0.05) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(212, 175, 55, 0.05) 75%);
       background-size: 16px 16px;
     }
 
@@ -553,10 +646,10 @@
       position: absolute;
       top: 1rem;
       right: 1rem;
-      background: rgba(0, 0, 0, 0.7);
-      border: 1px solid var(--accent);
-      color: var(--accent);
-      padding: 4px 10px;
+      background: rgba(18, 16, 14, 0.85);
+      border: 1px solid var(--accent-secondary);
+      color: var(--accent-secondary);
+      padding: 4px 12px;
       border-radius: 20px;
       font-family: var(--font-display);
       font-size: 0.65rem;
@@ -564,8 +657,8 @@
     }
 
     .project-icon-art {
-      width: 64px;
-      height: 64px;
+      width: 60px;
+      height: 60px;
       stroke: var(--accent);
       stroke-width: 1.5;
       fill: none;
@@ -573,15 +666,15 @@
     }
 
     .project-body {
-      padding: 1.5rem;
+      padding: 1.8rem;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
     }
 
     .project-title {
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+      margin-bottom: 0.6rem;
     }
 
     .project-desc {
@@ -589,22 +682,24 @@
       font-size: 0.9rem;
       margin-bottom: 1.5rem;
       flex-grow: 1;
+      line-height: 1.6;
     }
 
     .project-tech {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.6rem;
     }
 
     .tech-tag {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border-color);
-      padding: 3px 10px;
+      background: rgba(212, 175, 55, 0.06);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      padding: 4px 12px;
       border-radius: 4px;
-      font-family: var(--font-display);
+      font-family: var(--font-body);
       font-size: 0.7rem;
+      font-weight: 700;
       color: var(--text-muted);
     }
 
@@ -618,7 +713,7 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 0.6rem 1.2rem;
+      padding: 0.75rem 1.4rem;
       border-radius: 6px;
       font-family: var(--font-display);
       font-size: 0.75rem;
@@ -627,17 +722,19 @@
       cursor: pointer;
       transition: var(--transition);
       border: none;
+      letter-spacing: 1.5px;
     }
 
     .btn-primary {
-      background: var(--accent);
-      color: #000;
-      box-shadow: 0 0 15px var(--accent-glow);
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
+      color: #0d0c0a;
+      box-shadow: 0 4px 15px var(--accent-glow);
     }
 
     .btn-primary:hover {
       background: #fff;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+      color: #000;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
     }
 
     .btn-outline {
@@ -651,10 +748,10 @@
       color: var(--accent);
     }
 
-    /* Pit Stop Timeline / Experience */
+    /* Pit Stop Timeline / Career */
     .timeline {
       position: relative;
-      max-width: 800px;
+      max-width: 820px;
       margin: 0 auto;
     }
 
@@ -669,89 +766,93 @@
     }
 
     .timeline-item {
-      margin-bottom: 2.5rem;
+      margin-bottom: 2.8rem;
       position: relative;
       width: 50%;
-      padding-right: 2rem;
+      padding-right: 2.5rem;
     }
 
     .timeline-item:nth-child(even) {
       margin-left: 50%;
       padding-right: 0;
-      padding-left: 2rem;
+      padding-left: 2.5rem;
     }
 
     .timeline-dot {
       position: absolute;
-      right: -7px;
+      right: -8px;
       top: 0;
-      width: 14px;
-      height: 14px;
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
       background: var(--bg-main);
-      border: 2px solid var(--accent);
+      border: 2px solid var(--accent-secondary);
       box-shadow: 0 0 10px var(--accent-glow);
     }
 
     .timeline-item:nth-child(even) .timeline-dot {
       right: auto;
-      left: -7px;
+      left: -8px;
     }
 
     .timeline-content {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: 12px;
-      padding: 1.5rem;
+      padding: 1.8rem;
     }
 
     .timeline-date {
       font-family: var(--font-display);
       font-size: 0.75rem;
       color: var(--accent);
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.4rem;
+      letter-spacing: 1px;
     }
 
     .timeline-role {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 700;
     }
 
     .timeline-company {
-      color: var(--text-muted);
+      color: var(--accent-secondary);
       font-size: 0.85rem;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.8rem;
+      font-family: var(--font-display);
     }
 
-    /* Telemetry Contact Dashboard */
+    /* Contact Form / Commission Dashboard */
     .contact-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: 20px;
-      padding: 3rem;
-      max-width: 700px;
+      padding: 3.5rem;
+      max-width: 720px;
       margin: 0 auto;
       position: relative;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
     }
 
     .form-group {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.8rem;
     }
 
     .form-label {
       display: block;
       font-family: var(--font-display);
       font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
+      color: var(--accent-secondary);
+      margin-bottom: 0.6rem;
+      letter-spacing: 1.5px;
     }
 
     .form-input, .form-textarea {
       width: 100%;
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(10, 9, 8, 0.6);
       border: 1px solid var(--border-color);
       border-radius: 8px;
-      padding: 0.8rem 1rem;
+      padding: 0.9rem 1.2rem;
       color: var(--text-main);
       font-family: var(--font-body);
       font-size: 0.95rem;
@@ -761,27 +862,31 @@
     .form-input:focus, .form-textarea:focus {
       outline: none;
       border-color: var(--accent);
-      box-shadow: 0 0 10px var(--accent-glow);
+      box-shadow: 0 0 12px var(--accent-glow);
     }
 
     /* Footer */
     footer {
       border-top: 1px solid var(--border-color);
-      padding: 2rem 0;
+      padding: 2.5rem 0;
       text-align: center;
       color: var(--text-muted);
       font-family: var(--font-display);
-      font-size: 0.8rem;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
     }
 
     /* Responsive Design */
-    @media (max-width: 900px) {
+    @media (max-width: 960px) {
       .hero-grid {
         grid-template-columns: 1fr;
         text-align: center;
       }
       .hero-desc {
         margin: 0 auto 2rem auto;
+      }
+      .gauges-container {
+        flex-wrap: wrap;
       }
       .skills-container {
         grid-template-columns: 1fr;
@@ -792,42 +897,42 @@
       .timeline-item, .timeline-item:nth-child(even) {
         width: 100%;
         margin-left: 0;
-        padding-left: 1.5rem;
+        padding-left: 2rem;
         padding-right: 0;
       }
       .timeline-dot, .timeline-item:nth-child(even) .timeline-dot {
-        left: -6px;
+        left: -7px;
       }
       .nav-links {
-        display: none; /* Mobile menu can be simplified */
+        display: none;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Dashboard Navigation -->
+  <!-- Navigation -->
   <header>
     <div class="nav-container">
       <a href="#" class="brand-emblem">
-        <div class="brand-icon"></div>
-        <span>AM//PERFORMANCE</span>
+        <div class="brand-badge">S</div>
+        <span>MERCER // REIMAGINED</span>
       </a>
 
       <ul class="nav-links">
         <li><a href="#cockpit" class="active">COCKPIT</a></li>
-        <li><a href="#telemetry">SPECS</a></li>
+        <li><a href="#telemetry">TELEMETRY</a></li>
         <li><a href="#tuning">TUNING</a></li>
         <li><a href="#garage">GARAGE</a></li>
-        <li><a href="#pitstop">PIT STOP</a></li>
-        <li><a href="#launch">LAUNCH</a></li>
+        <li><a href="#pitstop">TRACK RECORD</a></li>
+        <li><a href="#launch">COMMISSION</a></li>
       </ul>
 
       <!-- Drive Mode Switcher -->
       <div class="mode-selector">
         <button class="mode-btn active" onclick="setDriveMode('sport')">SPORT</button>
+        <button class="mode-btn" onclick="setDriveMode('touring')">TOURING</button>
         <button class="mode-btn" onclick="setDriveMode('track')">TRACK</button>
-        <button class="mode-btn" onclick="setDriveMode('eco')">ECO</button>
       </div>
     </div>
   </header>
@@ -837,86 +942,127 @@
     <div class="container">
       <div class="hero-grid">
         <div class="hero-content">
-          <div class="hero-status">
-            <span class="status-dot"></span>
-            SYSTEMS ONLINE // ENGINE READY
+          <div class="hero-tag">
+            <span class="tag-dot"></span>
+            AIR-COOLED FULL-STACK ARCHITECTURE
           </div>
-          <h1 class="hero-title">High Performance<br><span>Software Engineer</span></h1>
-          <p class="hero-desc">Architecting lightning-fast web applications, scalable backend infrastructure, and precision-engineered digital experiences.</p>
+          <h1 class="hero-title">Everything is Important.<br><span>Reimagined Engineer.</span></h1>
+          <p class="hero-desc">Crafting bespoke web solutions with obsession for detail, analog elegance, and modern high-performance execution.</p>
           <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-            <a href="#garage" class="btn btn-primary">VIEW GARAGE</a>
-            <a href="#launch" class="btn btn-outline">SCHEDULE TELEMETRY</a>
+            <a href="#garage" class="btn btn-primary">EXPLORE BUILD GALLERY</a>
+            <a href="#launch" class="btn btn-outline">REQUEST SPECIFICATION</a>
           </div>
         </div>
 
-        <!-- Dashboard Instrument Cluster -->
-        <div class="dashboard-panel">
-          <div class="gauge-wrapper">
-            <div class="speedometer">
-              <svg class="gauge-svg" viewBox="0 0 200 200">
-                <circle class="gauge-bg" cx="100" cy="100" r="75"></circle>
-                <circle class="gauge-progress" id="rpmGauge" cx="100" cy="100" r="75"></circle>
-              </svg>
-              <div class="gauge-center">
-                <div class="speed-val" id="speedDisplay">0</div>
-                <div class="speed-unit">KM/H // RPM</div>
+        <!-- Classic Porsche 5-Gauge Instrument Cluster -->
+        <div class="porsche-cluster">
+          <div class="gauges-container">
+            <!-- Gauge 1: Oil / Temp -->
+            <div class="gauge gauge-sm">
+              <div class="gauge-inner">
+                <div class="gauge-title">OIL TEMP</div>
+                <div class="gauge-val" id="tempVal">90°</div>
+                <div class="gauge-unit">CELSIUS</div>
               </div>
+              <div class="gauge-needle" id="needle1" style="transform: translate(-50%, -100%) rotate(-40deg);"></div>
             </div>
 
-            <!-- Start / Stop Engine Button -->
-            <div class="ignition-box">
-              <button class="start-btn" id="startBtn" onclick="toggleEngine()">
-                <span>ENGINE</span>
-                <span style="color: var(--accent); margin-top:2px;">START</span>
-              </button>
+            <!-- Gauge 2: Fuel / Pressure -->
+            <div class="gauge gauge-md">
+              <div class="gauge-inner">
+                <div class="gauge-title">PRESSURE</div>
+                <div class="gauge-val" id="pressVal">4.2</div>
+                <div class="gauge-unit">BAR</div>
+              </div>
+              <div class="gauge-needle" id="needle2" style="transform: translate(-50%, -100%) rotate(10deg);"></div>
             </div>
+
+            <!-- Gauge 3 (Center): Singer Orange Tachometer -->
+            <div class="gauge gauge-lg">
+              <div class="gauge-inner">
+                <div class="gauge-title">TACHOMETER</div>
+                <div class="gauge-val" id="rpmDisplay">0</div>
+                <div class="gauge-unit">RPM x 1000</div>
+              </div>
+              <div class="gauge-needle" id="tachNeedle" style="transform: translate(-50%, -100%) rotate(-110deg);"></div>
+            </div>
+
+            <!-- Gauge 4: Speedometer -->
+            <div class="gauge gauge-md">
+              <div class="gauge-inner">
+                <div class="gauge-title">SPEED</div>
+                <div class="gauge-val" id="speedDisplay">0</div>
+                <div class="gauge-unit">KM / H</div>
+              </div>
+              <div class="gauge-needle" id="speedNeedle" style="transform: translate(-50%, -100%) rotate(-90deg);"></div>
+            </div>
+
+            <!-- Gauge 5: Clock -->
+            <div class="gauge gauge-sm">
+              <div class="gauge-inner">
+                <div class="gauge-title">TIME</div>
+                <div class="gauge-val" style="font-size: 0.8rem;" id="clockVal">12:00</div>
+                <div class="gauge-unit">ANALOG</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ignition Switch -->
+          <div class="ignition-box">
+            <div class="ignition-title">// FLAT-6 FLUID ENGINE STARTER</div>
+            <button class="start-btn" id="startBtn" onclick="toggleEngine()">
+              <span>START</span>
+              <span style="color: var(--accent-secondary); margin-top:2px;">ENGINE</span>
+            </button>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Spec Sheet / Telemetry -->
+  <!-- Telemetry & Specs -->
   <section class="section" id="telemetry">
     <div class="container">
-      <h2 class="section-title">Vehicle Telemetry</h2>
-      <p class="section-subtitle">Core engine specs and performance metrics</p>
+      <div class="section-header">
+        <h2 class="section-title">Engine Specifications</h2>
+        <p class="section-subtitle">Obsessively detailed performance metrics and platform capabilities</p>
+      </div>
 
       <div class="specs-grid">
         <div class="spec-card">
           <div class="spec-label">
-            <span>ENGINE ARCHITECTURE</span>
+            <span>POWERTRAIN</span>
             <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
           </div>
-          <div class="spec-value">FULL STACK</div>
-          <div class="spec-desc">React, Node.js, TypeScript, Python</div>
+          <div class="spec-value">4.0L FULL-STACK</div>
+          <div class="spec-desc">React, Node.js, TypeScript, Next.js, Python</div>
         </div>
 
         <div class="spec-card">
           <div class="spec-label">
-            <span>HORSEPOWER / EFFICIENCY</span>
+            <span>MAX OUT-PUT</span>
             <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
           </div>
-          <div class="spec-value">99.9%</div>
-          <div class="spec-desc">Uptime & High Availability Standard</div>
+          <div class="spec-value">500+ BHP</div>
+          <div class="spec-desc">Ultra-optimized throughput and high concurrency</div>
         </div>
 
         <div class="spec-card">
           <div class="spec-label">
-            <span>ACCELERATION (0-100)</span>
+            <span>RESPONSE TIME</span>
             <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/></svg>
           </div>
-          <div class="spec-value">&lt; 100ms</div>
-          <div class="spec-desc">Sub-second API response times</div>
+          <div class="spec-value">&lt; 85ms</div>
+          <div class="spec-desc">Lightning-fast edge delivery & cached state</div>
         </div>
 
         <div class="spec-card">
           <div class="spec-label">
-            <span>TRANSMISSION</span>
+            <span>WEIGHT SAVINGS</span>
             <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>
           </div>
-          <div class="spec-value">6-SPEED AGILE</div>
-          <div class="spec-desc">CI/CD Automated Deployment Pipelines</div>
+          <div class="spec-value">CARBON FIBER</div>
+          <div class="spec-desc">Zero bloatware, minimal bundle sizes</div>
         </div>
       </div>
     </div>
@@ -925,52 +1071,29 @@
   <!-- Performance Tuning / Skills -->
   <section class="section" id="tuning">
     <div class="container">
-      <h2 class="section-title">Performance Tuning</h2>
-      <p class="section-subtitle">Calibrated technical skill tree</p>
+      <div class="section-header">
+        <h2 class="section-title">Bespoke Calibrations</h2>
+        <p class="section-subtitle">Hand-crafted technological capabilities</p>
+      </div>
 
       <div class="skills-container">
         <!-- Group 1 -->
         <div class="skill-group">
-          <h3>// POWERTRAIN (FRONTEND)</h3>
+          <h3>// COCKPIT & INTERFACE (FRONTEND)</h3>
           
           <div class="skill-bar-item">
             <div class="skill-info">
-              <span>REACT / NEXT.JS</span>
-              <span>95%</span>
+              <span>REACT / NEXT.JS ARCHITECTURE</span>
+              <span>96%</span>
             </div>
             <div class="skill-track">
-              <div class="skill-fill" data-width="95%"></div>
+              <div class="skill-fill" data-width="96%"></div>
             </div>
           </div>
 
           <div class="skill-bar-item">
             <div class="skill-info">
-              <span>TYPESCRIPT</span>
-              <span>90%</span>
-            </div>
-            <div class="skill-track">
-              <div class="skill-fill" data-width="90%"></div>
-            </div>
-          </div>
-
-          <div class="skill-bar-item">
-            <div class="skill-info">
-              <span>THREE.JS / WEBGL / CSS3</span>
-              <span>85%</span>
-            </div>
-            <div class="skill-track">
-              <div class="skill-fill" data-width="85%"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Group 2 -->
-        <div class="skill-group">
-          <h3>// TURBOCHARGER (BACKEND & INFRA)</h3>
-          
-          <div class="skill-bar-item">
-            <div class="skill-info">
-              <span>NODE.JS / EXPRESS</span>
+              <span>TYPESCRIPT & STATE ENGINE</span>
               <span>92%</span>
             </div>
             <div class="skill-track">
@@ -980,21 +1103,46 @@
 
           <div class="skill-bar-item">
             <div class="skill-info">
-              <span>POSTGRESQL / REDIS</span>
+              <span>THREE.JS & WEBGL RENDERING</span>
               <span>88%</span>
             </div>
             <div class="skill-track">
               <div class="skill-fill" data-width="88%"></div>
             </div>
           </div>
+        </div>
+
+        <!-- Group 2 -->
+        <div class="skill-group">
+          <h3>// CHASSIS & TRANSMISSION (BACKEND)</h3>
+          
+          <div class="skill-bar-item">
+            <div class="skill-info">
+              <span>NODE.JS & GO MICROSERVICES</span>
+              <span>94%</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-fill" data-width="94%"></div>
+            </div>
+          </div>
 
           <div class="skill-bar-item">
             <div class="skill-info">
-              <span>DOCKER / AWS KUBERNETES</span>
-              <span>82%</span>
+              <span>POSTGRESQL & REDIS OPTIMIZATION</span>
+              <span>90%</span>
             </div>
             <div class="skill-track">
-              <div class="skill-fill" data-width="82%"></div>
+              <div class="skill-fill" data-width="90%"></div>
+            </div>
+          </div>
+
+          <div class="skill-bar-item">
+            <div class="skill-info">
+              <span>AWS KUBERNETES & CI/CD PIPELINES</span>
+              <span>85%</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-fill" data-width="85%"></div>
             </div>
           </div>
         </div>
@@ -1002,30 +1150,32 @@
     </div>
   </section>
 
-  <!-- Garage / Project Showroom -->
+  <!-- Garage / Restomod Projects -->
   <section class="section" id="garage">
     <div class="container">
-      <h2 class="section-title">The Garage</h2>
-      <p class="section-subtitle">Custom builds and engineered web solutions</p>
+      <div class="section-header">
+        <h2 class="section-title">The Restomod Garage</h2>
+        <p class="section-subtitle">Reimagined digital commissions with obsessive craft</p>
+      </div>
 
       <div class="garage-grid">
         <!-- Project 1 -->
         <div class="project-card">
           <div class="project-header">
-            <span class="project-badge">TWIN-TURBO</span>
+            <span class="project-badge">SPEC-01</span>
             <svg class="project-icon-art" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
           </div>
           <div class="project-body">
-            <h3 class="project-title">Apex Telemetry Platform</h3>
-            <p class="project-desc">Real-time automotive data streaming platform visualizing lap times, tire degradation, and GPS engine analytics.</p>
+            <h3 class="project-title">Singer Telemetry Suite</h3>
+            <p class="project-desc">Bespoke dashboard monitor visualizing track times, engine oil pressures, and engine acoustic diagnostics in real time.</p>
             <div class="project-tech">
               <span class="tech-tag">REACT</span>
               <span class="tech-tag">WEBSOCKETS</span>
-              <span class="tech-tag">GO</span>
+              <span class="tech-tag">CANVAS API</span>
             </div>
             <div class="project-links">
-              <a href="#" class="btn btn-primary">LAUNCH PROJECT</a>
-              <a href="#" class="btn btn-outline">SPECS</a>
+              <a href="#" class="btn btn-primary">VIEW BUILD</a>
+              <a href="#" class="btn btn-outline">SPEC SHEET</a>
             </div>
           </div>
         </div>
@@ -1033,19 +1183,19 @@
         <!-- Project 2 -->
         <div class="project-card">
           <div class="project-header">
-            <span class="project-badge">SUPERCHARGED</span>
+            <span class="project-badge">SPEC-02</span>
             <svg class="project-icon-art" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
           </div>
           <div class="project-body">
-            <h3 class="project-title">NitroDB Cache Engine</h3>
-            <p class="project-desc">Ultra-low latency in-memory key-value store optimized for high-concurrency microservices.</p>
+            <h3 class="project-title">Flat-Six Cache Engine</h3>
+            <p class="project-desc">Air-cooled, high-throughput memory engine engineered with Rust for instant data persistence and low overhead.</p>
             <div class="project-tech">
               <span class="tech-tag">RUST</span>
               <span class="tech-tag">C++</span>
-              <span class="tech-tag">REDIS PROTOCOL</span>
+              <span class="tech-tag">TCP PROTOCOL</span>
             </div>
             <div class="project-links">
-              <a href="#" class="btn btn-primary">VIEW CODE</a>
+              <a href="#" class="btn btn-primary">SOURCE CODE</a>
               <a href="#" class="btn btn-outline">BENCHMARKS</a>
             </div>
           </div>
@@ -1054,20 +1204,20 @@
         <!-- Project 3 -->
         <div class="project-card">
           <div class="project-header">
-            <span class="project-badge">ELECTRIC</span>
+            <span class="project-badge">SPEC-03</span>
             <svg class="project-icon-art" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
           </div>
           <div class="project-body">
-            <h3 class="project-title">HyperDrive Configurator</h3>
-            <p class="project-desc">Interactive 3D vehicle customization tool allowing users to build and render custom EV supercars in real-time.</p>
+            <h3 class="project-title">Restomod 3D Studio</h3>
+            <p class="project-desc">Interactive 3D configurator letting clients customize vehicle exterior paints, leather weaves, and engine trims.</p>
             <div class="project-tech">
               <span class="tech-tag">THREE.JS</span>
               <span class="tech-tag">WEBGL</span>
-              <span class="tech-tag">TAILWIND</span>
+              <span class="tech-tag">GLSL SHADERS</span>
             </div>
             <div class="project-links">
-              <a href="#" class="btn btn-primary">3D BUILDER</a>
-              <a href="#" class="btn btn-outline">SOURCE</a>
+              <a href="#" class="btn btn-primary">LAUNCH STUDIO</a>
+              <a href="#" class="btn btn-outline">GALLERY</a>
             </div>
           </div>
         </div>
@@ -1075,20 +1225,22 @@
     </div>
   </section>
 
-  <!-- Track Record / Experience -->
+  <!-- Track Record -->
   <section class="section" id="pitstop">
     <div class="container">
-      <h2 class="section-title">Track Record</h2>
-      <p class="section-subtitle">Pit stops along my career journey</p>
+      <div class="section-header">
+        <h2 class="section-title">Track Record</h2>
+        <p class="section-subtitle">Milestones and engineering appointments</p>
+      </div>
 
       <div class="timeline">
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <div class="timeline-date">2023 - PRESENT</div>
-            <div class="timeline-role">Lead Performance Architect</div>
-            <div class="timeline-company">Velocity Tech Labs</div>
-            <p style="font-size:0.85rem; color: var(--text-muted);">Spearheaded core infrastructure optimization, decreasing load speeds by 45% across global endpoints.</p>
+            <div class="timeline-role">Principal Software Architect</div>
+            <div class="timeline-company">Bespoke Engineering Labs</div>
+            <p style="font-size:0.88rem; color: var(--text-muted);">Overseeing full-stack re-architecting, optimizing application performance and reduced infrastructure footprint by 40%.</p>
           </div>
         </div>
 
@@ -1096,9 +1248,9 @@
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <div class="timeline-date">2021 - 2023</div>
-            <div class="timeline-role">Senior Full-Stack Engineer</div>
-            <div class="timeline-company">RPM Digital Solutions</div>
-            <p style="font-size:0.85rem; color: var(--text-muted);">Engineered high-frequency transaction pipelines and microservice architectures handling 1M+ daily calls.</p>
+            <div class="timeline-role">Lead Full-Stack Engineer</div>
+            <div class="timeline-company">Apex Performance Media</div>
+            <p style="font-size:0.88rem; color: var(--text-muted);">Built high-concurrency microservice APIs processing millions of daily requests with sub-100ms latency.</p>
           </div>
         </div>
 
@@ -1106,40 +1258,42 @@
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <div class="timeline-date">2019 - 2021</div>
-            <div class="timeline-role">Software Engineer</div>
-            <div class="timeline-company">Apex Systems</div>
-            <p style="font-size:0.85rem; color: var(--text-muted);">Developed modern React dashboards and real-time WebSocket telemetry interfaces for IoT clients.</p>
+            <div class="timeline-role">Frontend Specialist</div>
+            <div class="timeline-company">Carrera Interactive</div>
+            <p style="font-size:0.88rem; color: var(--text-muted);">Crafted modern UI component libraries with focus on typography, motion graphics, and canvas animations.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Launch Control / Contact -->
+  <!-- Commission / Contact -->
   <section class="section" id="launch">
     <div class="container">
-      <h2 class="section-title" style="justify-content: center;">Launch Control</h2>
-      <p class="section-subtitle" style="text-align: center;">Initiate contact and start a new build together</p>
+      <div class="section-header" style="text-align: center;">
+        <h2 class="section-title" style="justify-content: center;">Commission a Build</h2>
+        <p class="section-subtitle">Initiate a consultation for your custom application or system architecture</p>
+      </div>
 
       <div class="contact-card">
         <form onsubmit="event.preventDefault(); triggerLaunch();">
           <div class="form-group">
-            <label class="form-label">// DRIVER / CLIENT NAME</label>
-            <input type="text" class="form-input" placeholder="e.g. Carroll Shelby" required>
+            <label class="form-label">// CLIENT NAME</label>
+            <input type="text" class="form-input" placeholder="e.g. Ferry Porsche" required>
           </div>
 
           <div class="form-group">
-            <label class="form-label">// TELEMETRY / EMAIL ADDRESS</label>
-            <input type="email" class="form-input" placeholder="driver@grid.com" required>
+            <label class="form-label">// DIRECT CONTACT / EMAIL</label>
+            <input type="email" class="form-input" placeholder="porsche@stuttgart.com" required>
           </div>
 
           <div class="form-group">
-            <label class="form-label">// MISSION PARAMETERS / MESSAGE</label>
-            <textarea class="form-textarea" rows="4" placeholder="Detail your project specifications or performance targets..." required></textarea>
+            <label class="form-label">// COMMISSION SPECIFICATIONS</label>
+            <textarea class="form-textarea" rows="4" placeholder="Detail your project requirements, goals, or architectural scope..." required></textarea>
           </div>
 
-          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size:0.9rem;" id="launchBtn">
-            ENGAGE LAUNCH CONTROL
+          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1.1rem; font-size:0.85rem;" id="launchBtn">
+            SUBMIT SPECIFICATION REQUEST
           </button>
         </form>
       </div>
@@ -1149,17 +1303,15 @@
   <!-- Footer -->
   <footer>
     <div class="container">
-      <p>© 2026 ALEX MERCER // BUILT FOR HIGH SPEED & PRECISION</p>
+      <p>© 2026 ALEX MERCER // EVERYTHING IS IMPORTANT // RESTOMODED WITH OBSESSION</p>
     </div>
   </footer>
 
-  <!-- Inline Audio Synthesizer & Dashboard Scripting -->
+  <!-- Audio Synthesizer & Porsche Instrument Cluster Scripting -->
   <script>
-    /* Web Audio API Engine Sound Synthesizer */
     let audioCtx = null;
     let isEngineRunning = false;
     let rpmInterval = null;
-    let currentRpm = 0;
 
     function initAudio() {
       if (!audioCtx) {
@@ -1167,75 +1319,115 @@
       }
     }
 
-    // Synthesizes an engine roar & idle sound without external audio files
-    function playEngineSound() {
+    /* Synthesize Vintage Flat-6 Air-Cooled Engine Rumble */
+    function playFlatSixSound() {
       if (!audioCtx) return;
       if (audioCtx.state === 'suspended') {
         audioCtx.resume();
       }
 
-      // Oscillator for engine rumble
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      
-      osc.type = 'sawtooth';
-      
-      // Rev effect ramping
       const now = audioCtx.currentTime;
-      osc.frequency.setValueAtTime(45, now);
-      osc.frequency.exponentialRampToValueAtTime(320, now + 0.6);
-      osc.frequency.exponentialRampToValueAtTime(90, now + 2.0);
+      
+      // Dual Oscillators for rich air-cooled exhaust note
+      const osc1 = audioCtx.createOscillator();
+      const osc2 = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc1.type = 'sawtooth';
+      osc2.type = 'triangle';
+
+      // Pitch sweep simulation
+      osc1.frequency.setValueAtTime(55, now); // Low idle fundamental
+      osc1.frequency.exponentialRampToValueAtTime(280, now + 0.7); // Rev
+      osc1.frequency.exponentialRampToValueAtTime(95, now + 2.2);  // Settle back to idle
+
+      osc2.frequency.setValueAtTime(110, now);
+      osc2.frequency.exponentialRampToValueAtTime(560, now + 0.7);
+      osc2.frequency.exponentialRampToValueAtTime(190, now + 2.2);
 
       gain.gain.setValueAtTime(0.01, now);
-      gain.gain.linearRampToValueAtTime(0.2, now + 0.3);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 2.0);
+      gain.gain.linearRampToValueAtTime(0.25, now + 0.4);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 2.2);
 
-      osc.connect(gain);
+      osc1.connect(gain);
+      osc2.connect(gain);
       gain.connect(audioCtx.destination);
 
-      osc.start(now);
-      osc.stop(now + 2.0);
+      osc1.start(now);
+      osc2.start(now);
+      osc1.stop(now + 2.2);
+      osc2.stop(now + 2.2);
     }
 
+    /* Engine Toggle & Instrument Gauge Animation */
     function toggleEngine() {
       initAudio();
       const startBtn = document.getElementById('startBtn');
+      const rpmDisplay = document.getElementById('rpmDisplay');
       const speedDisplay = document.getElementById('speedDisplay');
-      const gauge = document.getElementById('rpmGauge');
+      
+      const tachNeedle = document.getElementById('tachNeedle');
+      const speedNeedle = document.getElementById('speedNeedle');
+      const needle1 = document.getElementById('needle1');
+      const needle2 = document.getElementById('needle2');
 
       isEngineRunning = !isEngineRunning;
 
       if (isEngineRunning) {
         startBtn.classList.add('running');
-        playEngineSound();
+        playFlatSixSound();
 
-        // Animate gauge & speedometer RPM bounce
+        let rpm = 0;
         let speed = 0;
+
         clearInterval(rpmInterval);
         rpmInterval = setInterval(() => {
-          if (speed < 280) {
-            speed += Math.floor(Math.random() * 25) + 10;
-            if (speed > 280) speed = 280;
+          if (rpm < 7) {
+            rpm += 0.4;
+            speed += 14;
           } else {
-            // High RPM idle wobble
-            speed = 270 + Math.floor(Math.random() * 15);
+            // High RPM idle fluctuation
+            rpm = 6.8 + (Math.random() * 0.5 - 0.25);
+            speed = 210 + (Math.random() * 6 - 3);
           }
+
+          rpmDisplay.innerText = rpm.toFixed(1);
+          speedDisplay.innerText = Math.round(speed);
+
+          // Rotate Gauge Needles
+          const tachDeg = -110 + (rpm / 8) * 220;
+          const speedDeg = -110 + (speed / 260) * 220;
           
-          speedDisplay.innerText = speed;
-          // Calculate gauge offset (max dashoffset 471, active arc range 353)
-          const offset = 471 - (speed / 300) * 353;
-          gauge.style.strokeDashoffset = offset;
+          tachNeedle.style.transform = `translate(-50%, -100%) rotate(${tachDeg}deg)`;
+          speedNeedle.style.transform = `translate(-50%, -100%) rotate(${speedDeg}deg)`;
+          needle1.style.transform = `translate(-50%, -100%) rotate(${10 + Math.random() * 20}deg)`;
+          needle2.style.transform = `translate(-50%, -100%) rotate(${30 + Math.random() * 15}deg)`;
+
         }, 80);
 
       } else {
         startBtn.classList.remove('running');
         clearInterval(rpmInterval);
-        
-        // Reset Gauge
+
+        // Reset Gauges
+        rpmDisplay.innerText = "0";
         speedDisplay.innerText = "0";
-        gauge.style.strokeDashoffset = 471;
+        tachNeedle.style.transform = `translate(-50%, -100%) rotate(-110deg)`;
+        speedNeedle.style.transform = `translate(-50%, -100%) rotate(-110deg)`;
+        needle1.style.transform = `translate(-50%, -100%) rotate(-40deg)`;
+        needle2.style.transform = `translate(-50%, -100%) rotate(10deg)`;
       }
     }
+
+    /* Update Analog Clock */
+    function updateClock() {
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      const clockEl = document.getElementById('clockVal');
+      if (clockEl) clockEl.innerText = timeStr;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
 
     /* Drive Mode Selector */
     function setDriveMode(mode) {
@@ -1250,7 +1442,7 @@
       });
     }
 
-    /* Animate Skills on Scroll */
+    /* Scroll Intersection Observer for Skills Bar Animation */
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1266,19 +1458,19 @@
       observer.observe(group);
     });
 
-    /* Contact Form Launch engage */
+    /* Submit Form Trigger */
     function triggerLaunch() {
       initAudio();
       if (audioCtx) {
-        playEngineSound();
+        playFlatSixSound();
       }
       const btn = document.getElementById('launchBtn');
-      btn.innerText = "LAUNCH SEQUENCE SUCCESSFUL!";
-      btn.style.background = "#00f0ff";
+      btn.innerText = "SPECIFICATION TRANSMITTED!";
+      btn.style.background = "var(--accent-secondary)";
       btn.style.color = "#000";
       setTimeout(() => {
-        btn.innerText = "ENGAGE LAUNCH CONTROL";
-        btn.style.background = "var(--accent)";
+        btn.innerText = "SUBMIT SPECIFICATION REQUEST";
+        btn.style.background = "linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%)";
       }, 3000);
     }
   </script>
