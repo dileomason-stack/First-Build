@@ -10,12 +10,13 @@
     <style>
         :root {
             --arc-blue: #00f0ff;
-            --arc-glow: rgba(0, 240, 255, 0.8);
+            --arc-glow: rgba(0, 240, 255, 0.85);
             --stark-gold: #ffb703;
-            --stark-red: #e63946;
-            --concrete-dark: #121418;
-            --concrete-wall: #1c2026;
-            --hud-bg: rgba(8, 15, 26, 0.85);
+            --stark-red: #8b0000;
+            --hot-red: #e63946;
+            --concrete-dark: #0a0c10;
+            --concrete-wall: #181c24;
+            --hud-bg: rgba(6, 12, 20, 0.9);
             --hud-border: rgba(0, 240, 255, 0.4);
             --text-main: #e0f7fc;
         }
@@ -28,7 +29,7 @@
         }
 
         body {
-            background-color: #050608;
+            background-color: #030406;
             color: var(--text-main);
             font-family: 'Share Tech Mono', monospace;
             overflow-x: hidden;
@@ -36,7 +37,7 @@
         }
 
         /* =========================================================
-           SCENE 1: BRUTALIST LAB / INTRO SEQUENCE
+           SCENE 1: BRUTALIST BATCAVE / LAB INTRO SEQUENCE
            ========================================================= */
         #intro-scene {
             position: fixed;
@@ -45,189 +46,194 @@
             width: 100vw;
             height: 100vh;
             z-index: 1000;
-            background: radial-gradient(circle at 50% 30%, #1a222d 0%, #080a0d 80%);
+            background: radial-gradient(circle at 50% 40%, #151a24 0%, #030406 85%);
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            transition: opacity 1s ease-out;
         }
 
-        /* Brutalist Concrete Pillar Grid Background */
-        .brutalist-room {
+        /* Brutalist Concrete Pillars & Multi-level Stairs */
+        .brutalist-bunker {
             position: absolute;
             inset: 0;
             background-image: 
-                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px),
-                linear-gradient(0deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-            background-size: 80px 80px;
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(0deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
             pointer-events: none;
         }
 
-        .concrete-pillar {
+        /* Heavy Concrete Structures */
+        .concrete-wall-left {
             position: absolute;
             top: 0;
             bottom: 0;
-            width: 180px;
-            background: linear-gradient(90deg, #0d1117 0%, #1c222b 50%, #0a0d12 100%);
-            border-right: 2px solid rgba(255,255,255,0.05);
-            box-shadow: 10px 0 30px rgba(0,0,0,0.8);
+            left: 0;
+            width: 220px;
+            background: linear-gradient(90deg, #090c10 0%, #161b22 70%, #080a0d 100%);
+            box-shadow: 15px 0 40px rgba(0,0,0,0.9);
+            border-right: 3px solid rgba(255,255,255,0.03);
         }
-        .pillar-left { left: 8%; }
-        .pillar-right { right: 8%; }
 
-        /* Concrete Skylight Grid at top */
-        .ceiling-skylight {
+        .concrete-wall-right {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            width: 220px;
+            background: linear-gradient(-90deg, #090c10 0%, #161b22 70%, #080a0d 100%);
+            box-shadow: -15px 0 40px rgba(0,0,0,0.9);
+            border-left: 3px solid rgba(255,255,255,0.03);
+        }
+
+        /* Overhead Concrete Skylight Grid */
+        .bunker-ceiling {
             position: absolute;
             top: 0;
             left: 20%;
             right: 20%;
-            height: 120px;
-            background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, transparent 100%);
-            border-bottom: 2px solid rgba(255,255,255,0.1);
+            height: 140px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, transparent 100%);
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 4px;
-            padding: 5px;
-        }
-        .skylight-pane {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            grid-template-columns: repeat(8, 1fr);
+            gap: 6px;
+            padding: 8px;
+            border-bottom: 2px solid rgba(255,255,255,0.05);
         }
 
-        /* Pedestal / Table in foreground */
-        .pedestal-table {
+        .ceiling-tile {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        /* Red Accent Lighting Bar in Background (from Batcave image) */
+        .red-light-strip {
             position: absolute;
-            bottom: 12%;
+            top: 38%;
+            left: 25%;
+            right: 25%;
+            height: 12px;
+            background: var(--hot-red);
+            box-shadow: 0 0 30px var(--hot-red), 0 0 60px var(--hot-red);
+            opacity: 0.8;
+        }
+
+        /* Pedestal / Workbench in Foreground */
+        .lab-workbench {
+            position: absolute;
+            bottom: 8%;
             left: 50%;
             transform: translateX(-50%);
-            width: 320px;
-            height: 90px;
-            background: linear-gradient(180deg, #2a313d 0%, #11151c 100%);
-            border-top: 3px solid #4a5568;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.9), inset 0 2px 5px rgba(255,255,255,0.2);
-            clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            width: 360px;
+            height: 110px;
+            background: linear-gradient(180deg, #222936 0%, #0d1117 100%);
+            border-top: 4px solid #4a5568;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.95), inset 0 2px 8px rgba(255,255,255,0.15);
+            clip-path: polygon(8% 0%, 92% 0%, 100% 100%, 0% 100%);
         }
 
-        /* Iron Man Suit Silhouette (Powered Off) */
+        /* Iron Man Suit Mark III (Unpowered) */
         #iron-suit {
             position: absolute;
-            top: 22%;
-            right: 15%;
-            width: 180px;
-            height: 380px;
-            transition: all 0.5s ease;
-            cursor: pointer;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.9));
+            top: 20%;
+            right: 12%;
+            width: 220px;
+            height: 440px;
+            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), filter 0.5s ease;
+            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.95));
         }
 
-        .suit-svg {
+        .suit-armor {
             width: 100%;
             height: 100%;
-            fill: #151921;
-            stroke: #2d3748;
-            stroke-width: 2;
-            transition: all 0.5s ease;
         }
 
-        .suit-eye {
-            fill: #0a0d12;
-            transition: fill 0.3s ease, filter 0.3s ease;
-        }
-
-        .suit-chest-socket {
-            fill: #0a0d12;
-            stroke: var(--arc-blue);
-            stroke-width: 1.5;
-            stroke-dasharray: 3 3;
-        }
-
-        /* Powered State */
-        #iron-suit.powered .suit-svg {
-            fill: #3b0a0a;
-            stroke: var(--stark-gold);
-        }
-        #iron-suit.powered .suit-eye {
-            fill: var(--arc-blue);
-            filter: drop-shadow(0 0 8px var(--arc-blue));
-        }
-
-        /* Arc Reactor Item (Draggable) */
+        /* Realistic Arc Reactor Replica (Detailed SVG/CSS) */
         #arc-reactor {
             position: absolute;
-            bottom: 16%;
+            bottom: 14%;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 80px;
+            width: 110px;
+            height: 110px;
             cursor: grab;
             z-index: 1100;
             touch-action: none;
-            transition: transform 0.1s ease-out;
+            transition: transform 0.08s ease-out;
         }
 
         #arc-reactor:active {
             cursor: grabbing;
         }
 
-        .reactor-core {
+        .arc-housing {
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background: radial-gradient(circle, #ffffff 0%, var(--arc-blue) 40%, rgba(0,240,255,0.2) 70%);
-            border: 4px solid var(--arc-blue);
-            box-shadow: 0 0 25px var(--arc-glow), inset 0 0 15px var(--arc-blue);
+            background: radial-gradient(circle, #ffffff 0%, var(--arc-blue) 35%, rgba(0,240,255,0.15) 75%);
+            border: 6px solid #111;
+            box-shadow: 0 0 30px var(--arc-glow), 0 0 60px var(--arc-glow), inset 0 0 20px #fff;
+            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            animation: pulse-glow 2s infinite alternate;
+            animation: pulse-arc 2.5s infinite alternate;
         }
 
-        .reactor-inner-ring {
-            width: 60%;
-            height: 60%;
+        /* Copper Coils and Ring Segments around Arc Reactor */
+        .arc-copper-coils {
+            position: absolute;
+            inset: 6px;
             border-radius: 50%;
-            border: 3px dashed #ffffff;
-            animation: spin-ring 10s linear infinite;
+            border: 4px dashed #b87333; /* Copper color */
+            animation: spin-coils 20s linear infinite;
         }
 
-        @keyframes pulse-glow {
-            0% { box-shadow: 0 0 15px var(--arc-glow), inset 0 0 10px var(--arc-blue); }
-            100% { box-shadow: 0 0 35px var(--arc-blue), 0 0 60px var(--arc-blue), inset 0 0 20px #fff; }
+        .arc-inner-grille {
+            width: 55%;
+            height: 55%;
+            border-radius: 50%;
+            border: 3px solid #000;
+            background: radial-gradient(circle, #fff 10%, var(--arc-blue) 60%);
+            box-shadow: 0 0 15px var(--arc-blue);
         }
 
-        @keyframes spin-ring {
+        @keyframes pulse-arc {
+            0% { box-shadow: 0 0 20px var(--arc-glow), inset 0 0 10px var(--arc-blue); }
+            100% { box-shadow: 0 0 45px var(--arc-blue), 0 0 80px var(--arc-blue), inset 0 0 25px #fff; }
+        }
+
+        @keyframes spin-coils {
             100% { transform: rotate(360deg); }
         }
 
-        /* Instruction overlay */
-        .instruction-banner {
+        /* HUD Instruction Banner */
+        .hud-prompt {
             position: absolute;
-            top: 15%;
+            top: 12%;
             left: 50%;
             transform: translateX(-50%);
             font-family: 'Orbitron', sans-serif;
             color: var(--arc-blue);
             text-align: center;
             letter-spacing: 3px;
-            text-shadow: 0 0 10px var(--arc-glow);
+            text-shadow: 0 0 12px var(--arc-glow);
             pointer-events: none;
         }
-        .instruction-banner h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem; }
-        .instruction-banner p { font-size: 0.9rem; color: #8a99ad; }
 
-        /* Fullscreen Laser Blast Transition Layer */
-        #repulsor-flash {
+        .hud-prompt h2 { font-size: 1.5rem; font-weight: 900; margin-bottom: 0.4rem; }
+        .hud-prompt p { font-size: 0.95rem; color: #8a99ad; }
+
+        /* Fullscreen Repulsor Blast Flash Overlay */
+        #repulsor-blast {
             position: fixed;
             inset: 0;
             background: #ffffff;
             opacity: 0;
             pointer-events: none;
             z-index: 2000;
-            transition: opacity 0.4s ease-in-out;
+            transition: opacity 0.35s ease-in-out;
         }
 
         /* =========================================================
@@ -236,10 +242,10 @@
         #hud-portfolio {
             display: none;
             opacity: 0;
-            transition: opacity 1s ease-in;
+            transition: opacity 0.8s ease-in;
             min-height: 100vh;
-            padding: 2rem 1rem 6rem;
-            background: radial-gradient(circle at 50% 50%, #0d1520 0%, #04070a 100%);
+            padding: 2rem 1.5rem 6rem;
+            background: radial-gradient(circle at 50% 50%, #0d1624 0%, #030508 100%);
             position: relative;
         }
 
@@ -248,14 +254,13 @@
             opacity: 1;
         }
 
-        /* Holographic Grid Canvas */
-        .hud-grid-overlay {
+        .grid-canvas {
             position: fixed;
             inset: 0;
             background-image: 
-                linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
-            background-size: 40px 40px;
+                linear-gradient(rgba(0, 240, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.04) 1px, transparent 1px);
+            background-size: 45px 45px;
             pointer-events: none;
             z-index: 1;
         }
@@ -267,49 +272,49 @@
             z-index: 10;
         }
 
-        /* Top HUD Status Bar */
+        /* Top HUD Header */
         .hud-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 2px solid var(--hud-border);
-            padding-bottom: 1rem;
-            margin-bottom: 2rem;
+            padding: 1.2rem 1.8rem;
             background: var(--hud-bg);
-            padding: 1rem 1.5rem;
             border-radius: 4px;
-            box-shadow: 0 0 15px rgba(0,240,255,0.1);
+            box-shadow: 0 0 20px rgba(0,240,255,0.12);
+            margin-bottom: 2rem;
         }
 
         .hud-title-zone h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2.2rem;
+            font-size: 2.3rem;
             font-weight: 900;
             color: var(--arc-blue);
-            text-shadow: 0 0 12px var(--arc-glow);
+            text-shadow: 0 0 14px var(--arc-glow);
             letter-spacing: 4px;
         }
 
         .hud-title-zone p {
             color: var(--stark-gold);
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             letter-spacing: 2px;
         }
 
         .system-status {
             text-align: right;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
+
         .status-online {
             color: #00ff88;
             font-weight: bold;
-            text-shadow: 0 0 8px #00ff88;
+            text-shadow: 0 0 10px #00ff88;
         }
 
-        /* Metric Diagnostic Widgets Grid */
+        /* Diagnostic Cards Grid */
         .diagnostics-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
             gap: 1.25rem;
             margin-bottom: 2.5rem;
         }
@@ -318,18 +323,16 @@
             background: var(--hud-bg);
             border: 1px solid var(--hud-border);
             border-left: 4px solid var(--arc-blue);
-            padding: 1.25rem;
+            padding: 1.3rem;
             border-radius: 4px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-            transition: transform 0.2s, border-color 0.2s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+            transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
         }
 
         .hud-card:hover {
-            transform: translateY(-3px);
+            transform: translateY(-4px);
             border-color: var(--arc-blue);
-            box-shadow: 0 0 15px var(--arc-glow);
+            box-shadow: 0 0 20px var(--arc-glow);
         }
 
         .hud-card-title {
@@ -342,10 +345,10 @@
 
         .hud-card-value {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2.4rem;
+            font-size: 2.5rem;
             font-weight: 800;
             color: #ffffff;
-            text-shadow: 0 0 10px var(--arc-glow);
+            text-shadow: 0 0 12px var(--arc-glow);
         }
 
         .hud-card-sub {
@@ -354,7 +357,7 @@
             margin-top: 0.25rem;
         }
 
-        /* HUD Interactive Section Tabs */
+        /* Interactive Navigation Buttons */
         .hud-nav {
             display: flex;
             gap: 1rem;
@@ -363,10 +366,10 @@
         }
 
         .hud-tab-btn {
-            background: rgba(11, 22, 38, 0.8);
+            background: rgba(11, 22, 38, 0.85);
             border: 1px solid var(--hud-border);
             color: var(--arc-blue);
-            padding: 0.6rem 1.5rem;
+            padding: 0.7rem 1.6rem;
             font-family: 'Orbitron', sans-serif;
             font-size: 0.95rem;
             cursor: pointer;
@@ -379,17 +382,16 @@
             background: var(--arc-blue);
             color: #04070a;
             font-weight: 800;
-            box-shadow: 0 0 15px var(--arc-blue);
+            box-shadow: 0 0 18px var(--arc-blue);
         }
 
-        /* Content Module Panels */
+        /* Content Modules */
         .hud-module {
             background: var(--hud-bg);
             border: 1px solid var(--hud-border);
-            padding: 1.75rem;
+            padding: 1.8rem;
             border-radius: 4px;
             margin-bottom: 2rem;
-            position: relative;
         }
 
         .module-header {
@@ -398,7 +400,7 @@
             color: var(--stark-gold);
             border-bottom: 1px solid rgba(255, 183, 3, 0.3);
             padding-bottom: 0.5rem;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -409,11 +411,11 @@
             color: var(--arc-blue);
         }
 
-        /* Experience Log Timeline */
+        /* Experience Timeline Nodes */
         .experience-node {
             border-left: 2px solid var(--arc-blue);
-            padding-left: 1.25rem;
-            margin-bottom: 1.75rem;
+            padding-left: 1.3rem;
+            margin-bottom: 1.8rem;
             position: relative;
         }
 
@@ -426,12 +428,12 @@
             height: 10px;
             background: var(--arc-blue);
             border-radius: 50%;
-            box-shadow: 0 0 8px var(--arc-blue);
+            box-shadow: 0 0 10px var(--arc-blue);
         }
 
         .node-role {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             color: #ffffff;
         }
 
@@ -454,7 +456,7 @@
         .node-bullets li {
             font-size: 0.95rem;
             color: var(--text-main);
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.35rem;
             line-height: 1.4;
         }
 
@@ -463,7 +465,7 @@
             color: var(--arc-blue);
         }
 
-        /* Tech Skill Badges */
+        /* Skill Tags */
         .skills-grid {
             display: flex;
             flex-wrap: wrap;
@@ -474,21 +476,21 @@
             background: rgba(0, 240, 255, 0.1);
             border: 1px solid var(--arc-blue);
             color: var(--arc-blue);
-            padding: 0.4rem 0.8rem;
+            padding: 0.45rem 0.9rem;
             font-size: 0.9rem;
             border-radius: 2px;
-            box-shadow: 0 0 5px rgba(0,240,255,0.2);
+            box-shadow: 0 0 6px rgba(0,240,255,0.25);
         }
 
-        /* HUD Bottom Terminal Footer */
+        /* Bottom Ticker Bar */
         .hud-footer {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            background: #04070a;
+            background: #030508;
             border-top: 1px solid var(--hud-border);
-            padding: 0.5rem 1.5rem;
+            padding: 0.6rem 1.8rem;
             display: flex;
             justify-content: space-between;
             font-size: 0.85rem;
@@ -496,90 +498,110 @@
             z-index: 100;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 800px) {
             .hud-title-zone h1 { font-size: 1.6rem; }
-            .pillar-left, .pillar-right { display: none; }
-            #iron-suit { right: 5%; width: 140px; }
-            .pedestal-table { width: 260px; }
+            .concrete-wall-left, .concrete-wall-right { display: none; }
+            #iron-suit { right: 5%; width: 170px; }
+            .lab-workbench { width: 280px; }
         }
     </style>
 </head>
 <body>
 
     <!-- =========================================================
-         SCENE 1: BRUTALIST BASEMENT LAB (INTRO)
+         SCENE 1: BRUTALIST BATCAVE / IRON MAN LAB (INTRO)
          ========================================================= -->
     <div id="intro-scene">
-        <div class="brutalist-room"></div>
-        <div class="concrete-pillar pillar-left"></div>
-        <div class="concrete-pillar pillar-right"></div>
+        <div class="brutalist-bunker"></div>
+        <div class="concrete-wall-left"></div>
+        <div class="concrete-wall-right"></div>
 
-        <div class="ceiling-skylight">
-            <div class="skylight-pane"></div>
-            <div class="skylight-pane"></div>
-            <div class="skylight-pane"></div>
-            <div class="skylight-pane"></div>
-            <div class="skylight-pane"></div>
-            <div class="skylight-pane"></div>
+        <div class="bunker-ceiling">
+            <div class="ceiling-tile"></div>
+            <div class="ceiling-tile"></div>
+            <div class="ceiling-tile"></div>
+            <div class="ceiling-tile"></div>
+            <div class="ceiling-tile"></div>
+            <div class="ceiling-tile"></div>
+            <div class="ceiling-tile"></div>
+            <div class="ceiling-tile"></div>
         </div>
 
-        <div class="instruction-banner">
+        <div class="red-light-strip"></div>
+
+        <div class="hud-prompt">
             <h2>SYSTEM OFFLINE</h2>
-            <p>DRAG ARC REACTOR TO THE SUIT TO INITIALIZE PROTOCOL</p>
+            <p>DRAG ARC REACTOR TO THE SUIT TO POWER ON</p>
         </div>
 
-        <!-- Inactive Iron Man Suit -->
+        <!-- Iron Man Suit Mark III Vector Graphic -->
         <div id="iron-suit">
-            <svg class="suit-svg" viewBox="0 0 100 200">
-                <!-- Helmet -->
-                <path d="M30 10 Q50 0 70 10 L75 35 L65 55 L35 55 L25 35 Z" />
-                <rect class="suit-eye" x="35" y="28" width="10" height="3" rx="1" />
-                <rect class="suit-eye" x="55" y="28" width="10" height="3" rx="1" />
-                <!-- Shoulders & Torso -->
-                <path d="M20 55 L35 55 L50 60 L65 55 L80 55 L90 80 L75 120 L25 120 L10 80 Z" />
-                <!-- Chest Arc Socket -->
-                <circle class="suit-chest-socket" cx="50" cy="80" r="10" />
-                <!-- Arms -->
-                <rect x="5" y="80" width="12" height="60" rx="4" />
-                <rect x="83" y="80" width="12" height="60" rx="4" />
-                <!-- Legs -->
-                <rect x="28" y="122" width="18" height="70" rx="3" />
-                <rect x="54" y="122" width="18" height="70" rx="3" />
+            <svg class="suit-armor" viewBox="0 0 200 400">
+                <g id="suit-body">
+                    <!-- Head Helmet -->
+                    <path d="M70 20 Q100 5 130 20 L145 60 L130 100 L70 100 L55 60 Z" fill="#220505" stroke="#4a1111" stroke-width="2"/>
+                    <path d="M75 35 Q100 25 125 35 L135 65 L125 80 L75 80 L65 65 Z" fill="#2d2208" stroke="#524011" stroke-width="2"/>
+                    <!-- Eye Slits (Lit when active) -->
+                    <polygon id="eye-left" points="75,55 92,55 90,60 77,60" fill="#0a0d12"/>
+                    <polygon id="eye-right" points="108,55 125,55 123,60 110,60" fill="#0a0d12"/>
+
+                    <!-- Shoulders & Torso -->
+                    <path d="M40 100 L70 100 L100 110 L130 100 L160 100 L185 140 L160 220 L40 220 L15 140 Z" fill="#220505" stroke="#4a1111" stroke-width="2"/>
+                    <path d="M65 110 L100 120 L135 110 L145 160 L130 210 L70 210 L55 160 Z" fill="#2d2208" stroke="#524011" stroke-width="2"/>
+                    
+                    <!-- Chest Arc Reactor Target Socket -->
+                    <circle id="chest-socket" cx="100" cy="150" r="22" fill="#080a0d" stroke="#00f0ff" stroke-width="2" stroke-dasharray="4 4"/>
+                    <circle cx="100" cy="150" r="14" fill="none" stroke="#220505" stroke-width="3"/>
+
+                    <!-- Arms -->
+                    <rect x="10" y="145" width="24" height="110" rx="8" fill="#220505" stroke="#4a1111" stroke-width="2"/>
+                    <rect x="166" y="145" width="24" height="110" rx="8" fill="#220505" stroke="#4a1111" stroke-width="2"/>
+
+                    <!-- Repulsor Palms -->
+                    <circle id="palm-left" cx="22" cy="245" r="5" fill="#0a0d12"/>
+                    <circle id="palm-right" cx="178" cy="245" r="5" fill="#0a0d12"/>
+
+                    <!-- Legs -->
+                    <rect x="52" y="222" width="40" height="160" rx="6" fill="#220505" stroke="#4a1111" stroke-width="2"/>
+                    <rect x="108" y="222" width="40" height="160" rx="6" fill="#220505" stroke="#4a1111" stroke-width="2"/>
+                </g>
             </svg>
         </div>
 
-        <!-- Pedestal and Glowing Arc Reactor -->
-        <div class="pedestal-table"></div>
+        <!-- Workbench and Interactive Arc Reactor -->
+        <div class="lab-workbench"></div>
+
         <div id="arc-reactor">
-            <div class="reactor-core">
-                <div class="reactor-inner-ring"></div>
+            <div class="arc-housing">
+                <div class="arc-copper-coils"></div>
+                <div class="arc-inner-grille"></div>
             </div>
         </div>
     </div>
 
-    <!-- White Flash Transition Effect -->
-    <div id="repulsor-flash"></div>
+    <!-- Repulsor Flash Transition Layer -->
+    <div id="repulsor-blast"></div>
 
     <!-- =========================================================
          SCENE 2: STARK HUD MAIN PORTFOLIO
          ========================================================= -->
     <div id="hud-portfolio">
-        <div class="hud-grid-overlay"></div>
+        <div class="grid-canvas"></div>
 
         <div class="hud-container">
-            <!-- Header -->
+            <!-- HUD Header Bar -->
             <header class="hud-header">
                 <div class="hud-title-zone">
                     <h1>MASON DI LEO</h1>
                     <p>BUSINESS ADMINISTRATION & INFORMATION SYSTEMS // CAL POLY SLO[cite: 1]</p>
                 </div>
                 <div class="system-status">
-                    <div>MARK VII OS: <span class="status-online">ONLINE</span></div>
+                    <div>MARK VII HUD: <span class="status-online">ONLINE</span></div>
                     <div>LOCATION: SAN LUIS OBISPO, CA</div>
                 </div>
             </header>
 
-            <!-- Metrics Overview -->
+            <!-- Metrics Cards -->
             <div class="diagnostics-grid">
                 <div class="hud-card">
                     <div class="hud-card-title">MAJOR GPA</div>
@@ -597,17 +619,17 @@
                     <div class="hud-card-sub">INSTAGRAM FOLLOWERS SCALED[cite: 1, 2]</div>
                 </div>
                 <div class="hud-card">
-                    <div class="hud-card-title">PROJECT STATUS</div>
+                    <div class="hud-card-title">APP DEVELOPMENT</div>
                     <div class="hud-card-value" style="color: var(--stark-gold); font-size: 1.8rem;">ACTIVE</div>
-                    <div class="hud-card-sub">HOLD THIS THOUGHT APP[cite: 1, 2]</div>
+                    <div class="hud-card-sub">HOLD THIS THOUGHT (iOS)[cite: 1, 2]</div>
                 </div>
             </div>
 
-            <!-- Navigation Filter -->
+            <!-- Tab Controls -->
             <div class="hud-nav">
-                <button class="hud-tab-btn active" onclick="switchTab('experience')">EXPERIENCE LOG</button>
-                <button class="hud-tab-btn" onclick="switchTab('honors')">HONORS & TROPHIES</button>
-                <button class="hud-tab-btn" onclick="switchTab('specs')">SYSTEM SPECS & SKILLS</button>
+                <button class="hud-tab-btn active" onclick="switchTab('experience', this)">EXPERIENCE LOG</button>
+                <button class="hud-tab-btn" onclick="switchTab('honors', this)">HONORS & TROPHIES</button>
+                <button class="hud-tab-btn" onclick="switchTab('specs', this)">SYSTEM SPECS & SKILLS</button>
             </div>
 
             <!-- TAB 1: EXPERIENCE LOG -->
@@ -734,24 +756,24 @@
         </div>
     </div>
 
-    <!-- HUD Bottom Status Bar -->
+    <!-- HUD Footer Bar -->
     <div class="hud-footer">
-        <div>JARVIS CORE VERSION 4.0.1</div>
-        <div>ALL SYSTEMS OPERATIONAL</div>
+        <div>JARVIS SYSTEM STATUS: OPTIMAL</div>
+        <div>STARK INDUSTRIES HUD PROTOCOL ACTIVE</div>
     </div>
 
-    <!-- Drag & Drop Interactive Script -->
+    <!-- Interactive Logic Script -->
     <script>
         const arcReactor = document.getElementById('arc-reactor');
         const ironSuit = document.getElementById('iron-suit');
         const introScene = document.getElementById('intro-scene');
-        const flashOverlay = document.getElementById('repulsor-flash');
+        const repulsorBlast = document.getElementById('repulsor-blast');
         const hudPortfolio = document.getElementById('hud-portfolio');
 
         let isDragging = false;
         let startX, startY, initialLeft, initialTop;
 
-        // Mouse & Touch Drag Handlers
+        // Mouse & Touch Drag Controls
         arcReactor.addEventListener('mousedown', startDrag);
         arcReactor.addEventListener('touchstart', startDrag, { passive: false });
 
@@ -800,49 +822,67 @@
             const arcRect = arcReactor.getBoundingClientRect();
             const suitRect = ironSuit.getBoundingClientRect();
 
-            // Collision detection check
+            // Collision overlap logic
             const overlap = !(arcRect.right < suitRect.left || 
                               arcRect.left > suitRect.right || 
                               arcRect.bottom < suitRect.top || 
                               arcRect.top > suitRect.bottom);
 
             if (overlap) {
-                triggerSuitActivation();
+                powerUpSuit();
             }
         }
 
-        function triggerSuitActivation() {
-            // Disable further dragging
+        function powerUpSuit() {
             isDragging = false;
             document.removeEventListener('mousemove', drag);
             document.removeEventListener('touchmove', drag);
 
-            // Snaps reactor onto suit chest
-            arcReactor.style.opacity = '0';
-            ironSuit.classList.add('powered');
+            // Hide standalone arc reactor
+            arcReactor.style.display = 'none';
 
-            // Suit takeoff animation sequence
+            // Power up visual sequence on SVG suit
+            const suitBody = document.querySelectorAll('#suit-body path, #suit-body stroke');
+            document.querySelectorAll('#suit-body path')[0].setAttribute('fill', '#8b0000');
+            document.querySelectorAll('#suit-body path')[1].setAttribute('fill', '#ffb703');
+            document.querySelectorAll('#suit-body path')[2].setAttribute('fill', '#8b0000');
+            document.querySelectorAll('#suit-body path')[3].setAttribute('fill', '#ffb703');
+
+            // Light up eyes
+            const eyeL = document.getElementById('eye-left');
+            const eyeR = document.getElementById('eye-right');
+            eyeL.setAttribute('fill', '#00f0ff');
+            eyeR.setAttribute('fill', '#00f0ff');
+            eyeL.style.filter = 'drop-shadow(0 0 8px #00f0ff)';
+            eyeR.style.filter = 'drop-shadow(0 0 8px #00f0ff)';
+
+            // Light up chest arc reactor socket
+            const chestSocket = document.getElementById('chest-socket');
+            chestSocket.setAttribute('fill', '#00f0ff');
+            chestSocket.style.filter = 'drop-shadow(0 0 15px #00f0ff)';
+
+            // Step 1: Suit floats into the air
             setTimeout(() => {
-                ironSuit.style.transform = 'translateY(-80px) scale(1.1)';
+                ironSuit.style.transform = 'translate(-40vw, -10vh) scale(2.2)';
             }, 600);
 
-            // Shoot Repulsor Beam Transition
+            // Step 2: Repulsor Blast directly at camera/screen
             setTimeout(() => {
-                flashOverlay.style.opacity = '1';
-            }, 1200);
+                repulsorBlast.style.opacity = '1';
+            }, 1400);
 
-            // Switch to STARK HUD Portfolio
+            // Step 3: Transition to HUD Portfolio Website
             setTimeout(() => {
                 introScene.style.display = 'none';
                 hudPortfolio.classList.add('visible');
-                flashOverlay.style.opacity = '0';
-            }, 1800);
+                repulsorBlast.style.opacity = '0';
+            }, 2000);
         }
 
-        // Tab Switching Functionality
-        function switchTab(tabName) {
-            document.querySelectorAll('.hud-tab-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+        // Tab Navigation Logic
+        function switchTab(tabName, btn) {
+            document.querySelectorAll('.hud-tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
 
             document.getElementById('tab-experience').style.display = tabName === 'experience' ? 'block' : 'none';
             document.getElementById('tab-honors').style.display = tabName === 'honors' ? 'block' : 'none';
