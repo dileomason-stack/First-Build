@@ -3,502 +3,625 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mason Di Leo — Sports Broadcast Portfolio</title>
+    <title>Mason Di Leo — Stark Industries HUD Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@700;900&family=Impact&family=Teko:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
         :root {
-            --vintage-gold: #f2a900;
-            --gold-3d: #b87b00;
-            --cbs-blue: #0b1a30;
-            --retro-cream: #f4ebd0;
-            --grass-green: #1d5227;
-            --field-stripe: rgba(255, 255, 255, 0.08);
-            --chalk-white: #ffffff;
-            --shadow-black: #050a12;
-            --madden-orange: #d94a1e;
+            --arc-blue: #00f0ff;
+            --arc-glow: rgba(0, 240, 255, 0.8);
+            --stark-gold: #ffb703;
+            --stark-red: #e63946;
+            --concrete-dark: #121418;
+            --concrete-wall: #1c2026;
+            --hud-bg: rgba(8, 15, 26, 0.85);
+            --hud-border: rgba(0, 240, 255, 0.4);
+            --text-main: #e0f7fc;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            user-select: none;
         }
 
         body {
-            background-color: var(--grass-green);
-            background-image: 
-                linear-gradient(0deg, var(--field-stripe) 50%, transparent 50%),
-                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-            background-size: 100% 120px, 40px 100%;
-            color: var(--chalk-white);
-            font-family: 'Teko', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding-bottom: 6rem;
+            background-color: #050608;
+            color: var(--text-main);
+            font-family: 'Share Tech Mono', monospace;
+            overflow-x: hidden;
+            min-height: 100vh;
         }
 
-        /* Top 80s Broadcast Header Banner */
-        .network-banner {
-            background: linear-gradient(180deg, #1c2d4a 0%, var(--cbs-blue) 100%);
-            border-bottom: 6px solid var(--vintage-gold);
-            box-shadow: 0 8px 0 var(--shadow-black);
-            position: sticky;
+        /* =========================================================
+           SCENE 1: BRUTALIST LAB / INTRO SEQUENCE
+           ========================================================= */
+        #intro-scene {
+            position: fixed;
             top: 0;
-            z-index: 100;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1000;
+            background: radial-gradient(circle at 50% 30%, #1a222d 0%, #080a0d 80%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            transition: opacity 1s ease-out;
         }
 
-        .header-container {
-            max-width: 1100px;
+        /* Brutalist Concrete Pillar Grid Background */
+        .brutalist-room {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(0deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 80px 80px;
+            pointer-events: none;
+        }
+
+        .concrete-pillar {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 180px;
+            background: linear-gradient(90deg, #0d1117 0%, #1c222b 50%, #0a0d12 100%);
+            border-right: 2px solid rgba(255,255,255,0.05);
+            box-shadow: 10px 0 30px rgba(0,0,0,0.8);
+        }
+        .pillar-left { left: 8%; }
+        .pillar-right { right: 8%; }
+
+        /* Concrete Skylight Grid at top */
+        .ceiling-skylight {
+            position: absolute;
+            top: 0;
+            left: 20%;
+            right: 20%;
+            height: 120px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 4px;
+            padding: 5px;
+        }
+        .skylight-pane {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Pedestal / Table in foreground */
+        .pedestal-table {
+            position: absolute;
+            bottom: 12%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 320px;
+            height: 90px;
+            background: linear-gradient(180deg, #2a313d 0%, #11151c 100%);
+            border-top: 3px solid #4a5568;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.9), inset 0 2px 5px rgba(255,255,255,0.2);
+            clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Iron Man Suit Silhouette (Powered Off) */
+        #iron-suit {
+            position: absolute;
+            top: 22%;
+            right: 15%;
+            width: 180px;
+            height: 380px;
+            transition: all 0.5s ease;
+            cursor: pointer;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.9));
+        }
+
+        .suit-svg {
+            width: 100%;
+            height: 100%;
+            fill: #151921;
+            stroke: #2d3748;
+            stroke-width: 2;
+            transition: all 0.5s ease;
+        }
+
+        .suit-eye {
+            fill: #0a0d12;
+            transition: fill 0.3s ease, filter 0.3s ease;
+        }
+
+        .suit-chest-socket {
+            fill: #0a0d12;
+            stroke: var(--arc-blue);
+            stroke-width: 1.5;
+            stroke-dasharray: 3 3;
+        }
+
+        /* Powered State */
+        #iron-suit.powered .suit-svg {
+            fill: #3b0a0a;
+            stroke: var(--stark-gold);
+        }
+        #iron-suit.powered .suit-eye {
+            fill: var(--arc-blue);
+            filter: drop-shadow(0 0 8px var(--arc-blue));
+        }
+
+        /* Arc Reactor Item (Draggable) */
+        #arc-reactor {
+            position: absolute;
+            bottom: 16%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            cursor: grab;
+            z-index: 1100;
+            touch-action: none;
+            transition: transform 0.1s ease-out;
+        }
+
+        #arc-reactor:active {
+            cursor: grabbing;
+        }
+
+        .reactor-core {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle, #ffffff 0%, var(--arc-blue) 40%, rgba(0,240,255,0.2) 70%);
+            border: 4px solid var(--arc-blue);
+            box-shadow: 0 0 25px var(--arc-glow), inset 0 0 15px var(--arc-blue);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: pulse-glow 2s infinite alternate;
+        }
+
+        .reactor-inner-ring {
+            width: 60%;
+            height: 60%;
+            border-radius: 50%;
+            border: 3px dashed #ffffff;
+            animation: spin-ring 10s linear infinite;
+        }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 15px var(--arc-glow), inset 0 0 10px var(--arc-blue); }
+            100% { box-shadow: 0 0 35px var(--arc-blue), 0 0 60px var(--arc-blue), inset 0 0 20px #fff; }
+        }
+
+        @keyframes spin-ring {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Instruction overlay */
+        .instruction-banner {
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Orbitron', sans-serif;
+            color: var(--arc-blue);
+            text-align: center;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px var(--arc-glow);
+            pointer-events: none;
+        }
+        .instruction-banner h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem; }
+        .instruction-banner p { font-size: 0.9rem; color: #8a99ad; }
+
+        /* Fullscreen Laser Blast Transition Layer */
+        #repulsor-flash {
+            position: fixed;
+            inset: 0;
+            background: #ffffff;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 2000;
+            transition: opacity 0.4s ease-in-out;
+        }
+
+        /* =========================================================
+           SCENE 2: STARK HUD MAIN PORTFOLIO
+           ========================================================= */
+        #hud-portfolio {
+            display: none;
+            opacity: 0;
+            transition: opacity 1s ease-in;
+            min-height: 100vh;
+            padding: 2rem 1rem 6rem;
+            background: radial-gradient(circle at 50% 50%, #0d1520 0%, #04070a 100%);
+            position: relative;
+        }
+
+        #hud-portfolio.visible {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Holographic Grid Canvas */
+        .hud-grid-overlay {
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hud-container {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0.75rem 1.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Top HUD Status Bar */
+        .hud-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
-
-        .broadcast-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            text-decoration: none;
-        }
-
-        .eye-logo {
-            background: var(--vintage-gold);
-            color: var(--cbs-blue);
-            font-family: 'Impact', sans-serif;
-            font-size: 1.2rem;
-            padding: 0.2rem 0.6rem;
+            border-bottom: 2px solid var(--hud-border);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+            background: var(--hud-bg);
+            padding: 1rem 1.5rem;
             border-radius: 4px;
-            box-shadow: 2px 2px 0 var(--shadow-black);
+            box-shadow: 0 0 15px rgba(0,240,255,0.1);
         }
 
-        .network-title {
-            font-family: 'Impact', sans-serif;
-            font-size: 2rem;
-            color: var(--vintage-gold);
-            text-shadow: 3px 3px 0 var(--shadow-black), -1px -1px 0 #fff;
+        .hud-title-zone h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--arc-blue);
+            text-shadow: 0 0 12px var(--arc-glow);
+            letter-spacing: 4px;
+        }
+
+        .hud-title-zone p {
+            color: var(--stark-gold);
+            font-size: 1.1rem;
             letter-spacing: 2px;
         }
 
-        nav a {
-            color: var(--retro-cream);
-            text-decoration: none;
-            font-size: 1.4rem;
-            margin-left: 1.5rem;
-            font-weight: 700;
-            transition: color 0.2s;
-            text-shadow: 2px 2px 0 var(--shadow-black);
+        .system-status {
+            text-align: right;
+            font-size: 0.9rem;
+        }
+        .status-online {
+            color: #00ff88;
+            font-weight: bold;
+            text-shadow: 0 0 8px #00ff88;
         }
 
-        nav a:hover {
-            color: var(--vintage-gold);
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        /* Matchup Overlay / Main Title Card */
-        .matchup-hero {
-            margin-top: 2.5rem;
-            background: var(--cbs-blue);
-            border: 5px solid var(--vintage-gold);
-            box-shadow: 10px 10px 0 var(--shadow-black);
-            padding: 2rem;
-            text-align: center;
-            position: relative;
-        }
-
-        .live-tag {
-            background: var(--madden-orange);
-            color: var(--chalk-white);
-            font-family: 'Chivo Mono', monospace;
-            font-size: 1rem;
-            padding: 0.2rem 1rem;
-            display: inline-block;
-            border: 2px solid var(--chalk-white);
-            box-shadow: 3px 3px 0 var(--shadow-black);
-            margin-bottom: 1rem;
-        }
-
-        .matchup-title {
-            font-family: 'Impact', sans-serif;
-            font-size: 4rem;
-            line-height: 0.95;
-            color: var(--vintage-gold);
-            text-shadow: 4px 4px 0 var(--shadow-black), -2px -2px 0 var(--gold-3d);
-            margin-bottom: 0.5rem;
-        }
-
-        .sub-header-banner {
-            background: var(--retro-cream);
-            color: var(--cbs-blue);
-            font-size: 1.8rem;
-            font-weight: 700;
-            padding: 0.2rem 1rem;
-            display: inline-block;
-            margin-bottom: 1.5rem;
-            box-shadow: 4px 4px 0 var(--shadow-black);
-        }
-
-        .stats-ticker-bar {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            background: #060d17;
-            border: 3px solid var(--vintage-gold);
-            padding: 1rem;
-            margin-top: 1rem;
-        }
-
-        .stat-box {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-family: 'Chivo Mono', monospace;
-            font-size: 2.5rem;
-            color: var(--vintage-gold);
-            line-height: 1;
-        }
-
-        .stat-label {
-            font-size: 1.1rem;
-            color: var(--retro-cream);
-        }
-
-        /* Section Graphic Headers */
-        .broadcast-section-title {
-            margin-top: 3.5rem;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(90deg, var(--vintage-gold) 0%, var(--gold-3d) 100%);
-            color: var(--cbs-blue);
-            padding: 0.5rem 1.5rem;
-            font-family: 'Impact', sans-serif;
-            font-size: 2.2rem;
-            border: 3px solid var(--shadow-black);
-            box-shadow: 6px 6px 0 var(--shadow-black);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* Honors Cards */
-        .honors-grid {
+        /* Metric Diagnostic Widgets Grid */
+        .diagnostics-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 1.25rem;
+            margin-bottom: 2.5rem;
         }
 
-        .honor-card {
-            background: var(--retro-cream);
-            color: var(--cbs-blue);
-            border: 4px solid var(--cbs-blue);
-            box-shadow: 6px 6px 0 var(--shadow-black);
+        .hud-card {
+            background: var(--hud-bg);
+            border: 1px solid var(--hud-border);
+            border-left: 4px solid var(--arc-blue);
             padding: 1.25rem;
-            text-align: center;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            transition: transform 0.2s, border-color 0.2s;
         }
 
-        .honor-card h3 {
-            font-family: 'Impact', sans-serif;
-            font-size: 1.5rem;
-            line-height: 1.1;
-            color: var(--madden-orange);
+        .hud-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--arc-blue);
+            box-shadow: 0 0 15px var(--arc-glow);
+        }
+
+        .hud-card-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: var(--stark-gold);
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .hud-card-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-shadow: 0 0 10px var(--arc-glow);
+        }
+
+        .hud-card-sub {
+            font-size: 0.85rem;
+            color: #8a99ad;
+            margin-top: 0.25rem;
+        }
+
+        /* HUD Interactive Section Tabs */
+        .hud-nav {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .hud-tab-btn {
+            background: rgba(11, 22, 38, 0.8);
+            border: 1px solid var(--hud-border);
+            color: var(--arc-blue);
+            padding: 0.6rem 1.5rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.95rem;
+            cursor: pointer;
+            letter-spacing: 2px;
+            transition: all 0.2s;
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+        }
+
+        .hud-tab-btn:hover, .hud-tab-btn.active {
+            background: var(--arc-blue);
+            color: #04070a;
+            font-weight: 800;
+            box-shadow: 0 0 15px var(--arc-blue);
+        }
+
+        /* Content Module Panels */
+        .hud-module {
+            background: var(--hud-bg);
+            border: 1px solid var(--hud-border);
+            padding: 1.75rem;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .module-header {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            color: var(--stark-gold);
+            border-bottom: 1px solid rgba(255, 183, 3, 0.3);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .module-header::before {
+            content: '// ';
+            color: var(--arc-blue);
+        }
+
+        /* Experience Log Timeline */
+        .experience-node {
+            border-left: 2px solid var(--arc-blue);
+            padding-left: 1.25rem;
+            margin-bottom: 1.75rem;
+            position: relative;
+        }
+
+        .experience-node::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            background: var(--arc-blue);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--arc-blue);
+        }
+
+        .node-role {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            color: #ffffff;
+        }
+
+        .node-company {
+            color: var(--stark-gold);
+            font-size: 1rem;
             margin-bottom: 0.25rem;
         }
 
-        .honor-card p {
-            font-size: 1.2rem;
-            font-weight: 700;
+        .node-time {
+            font-size: 0.85rem;
+            color: #6b7c93;
+            margin-bottom: 0.5rem;
         }
 
-        /* Program Schedule / Interactive Filter Controls */
-        .schedule-controls {
-            display: flex;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .channel-btn {
-            background: var(--cbs-blue);
-            color: var(--retro-cream);
-            border: 3px solid var(--vintage-gold);
-            padding: 0.4rem 1.2rem;
-            font-family: 'Impact', sans-serif;
-            font-size: 1.3rem;
-            cursor: pointer;
-            box-shadow: 4px 4px 0 var(--shadow-black);
-            transition: all 0.1s;
-        }
-
-        .channel-btn:hover, .channel-btn.active {
-            background: var(--madden-orange);
-            color: var(--chalk-white);
-            border-color: var(--chalk-white);
-            transform: translate(-2px, -2px);
-            box-shadow: 6px 6px 0 var(--shadow-black);
-        }
-
-        /* Experience Playbook Cards */
-        .playbook-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .play-card {
-            background: var(--cbs-blue);
-            border: 4px solid var(--retro-cream);
-            box-shadow: 8px 8px 0 var(--shadow-black);
-            padding: 1.5rem;
-        }
-
-        .play-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            border-bottom: 2px dashed var(--vintage-gold);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .play-title {
-            font-family: 'Impact', sans-serif;
-            font-size: 1.8rem;
-            color: var(--vintage-gold);
-            line-height: 1;
-        }
-
-        .play-team {
-            font-size: 1.3rem;
-            color: var(--retro-cream);
-        }
-
-        .play-time {
-            background: var(--madden-orange);
-            color: var(--chalk-white);
-            font-family: 'Chivo Mono', monospace;
-            padding: 0.2rem 0.6rem;
-            font-size: 0.9rem;
-            border: 1px solid var(--chalk-white);
-        }
-
-        .play-bullets {
+        .node-bullets {
             list-style: none;
         }
 
-        .play-bullets li {
-            font-size: 1.25rem;
-            color: var(--chalk-white);
-            margin-bottom: 0.4rem;
-            position: relative;
-            padding-left: 1.5rem;
-            line-height: 1.3;
+        .node-bullets li {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin-bottom: 0.3rem;
+            line-height: 1.4;
         }
 
-        .play-bullets li::before {
-            content: '►';
-            position: absolute;
-            left: 0;
-            color: var(--vintage-gold);
+        .node-bullets li::before {
+            content: '> ';
+            color: var(--arc-blue);
         }
 
-        /* Two Column Layout for Specs */
-        .two-column {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-
-        .teleprompter-box {
-            background: var(--retro-cream);
-            color: var(--cbs-blue);
-            border: 4px solid var(--cbs-blue);
-            box-shadow: 8px 8px 0 var(--shadow-black);
-            padding: 1.5rem;
-        }
-
-        .prompter-header {
-            font-family: 'Impact', sans-serif;
-            font-size: 1.8rem;
-            color: var(--cbs-blue);
-            border-bottom: 3px solid var(--madden-orange);
-            margin-bottom: 1rem;
-        }
-
-        .prompter-row {
-            display: flex;
-            justify-content: space-between;
-            font-size: 1.25rem;
-            font-weight: 700;
-            padding: 0.4rem 0;
-            border-bottom: 1px solid rgba(11, 26, 48, 0.2);
-        }
-
-        .tag-group {
+        /* Tech Skill Badges */
+        .skills-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 0.5rem;
+            gap: 0.75rem;
         }
 
-        .badge-tag {
-            background: var(--cbs-blue);
-            color: var(--vintage-gold);
-            padding: 0.2rem 0.6rem;
-            font-family: 'Chivo Mono', monospace;
+        .skill-tag {
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid var(--arc-blue);
+            color: var(--arc-blue);
+            padding: 0.4rem 0.8rem;
             font-size: 0.9rem;
-            border: 1px solid var(--shadow-black);
+            border-radius: 2px;
+            box-shadow: 0 0 5px rgba(0,240,255,0.2);
         }
 
-        /* Interactive Bottom Scoreboard Ticker */
-        .bottom-ticker {
+        /* HUD Bottom Terminal Footer */
+        .hud-footer {
             position: fixed;
             bottom: 0;
             left: 0;
-            width: 100%;
-            background: var(--cbs-blue);
-            border-top: 4px solid var(--vintage-gold);
-            padding: 0.5rem 1rem;
+            right: 0;
+            background: #04070a;
+            border-top: 1px solid var(--hud-border);
+            padding: 0.5rem 1.5rem;
             display: flex;
-            align-items: center;
-            z-index: 200;
-            box-shadow: 0 -4px 10px var(--shadow-black);
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--arc-blue);
+            z-index: 100;
         }
 
-        .ticker-label {
-            background: var(--madden-orange);
-            color: var(--chalk-white);
-            font-family: 'Impact', sans-serif;
-            font-size: 1.2rem;
-            padding: 0.2rem 0.8rem;
-            margin-right: 1rem;
-            white-space: nowrap;
-        }
-
-        .ticker-text {
-            font-family: 'Chivo Mono', monospace;
-            font-size: 1.1rem;
-            color: var(--vintage-gold);
-            white-space: nowrap;
-            overflow: hidden;
-        }
-
-        @media (max-width: 800px) {
-            .matchup-title { font-size: 2.5rem; }
-            .two-column { grid-template-columns: 1fr; }
-            .header-container { flex-direction: column; gap: 0.5rem; }
+        @media (max-width: 768px) {
+            .hud-title-zone h1 { font-size: 1.6rem; }
+            .pillar-left, .pillar-right { display: none; }
+            #iron-suit { right: 5%; width: 140px; }
+            .pedestal-table { width: 260px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Broadcast Network Header Banner -->
-    <header class="network-banner">
-        <div class="header-container">
-            <a href="#" class="broadcast-logo">
-                <div class="eye-logo">CBS</div>
-                <div class="network-title">SPORTS SPECIAL</div>
-            </a>
-            <nav>
-                <a href="#honors">Honors</a>
-                <a href="#playbook">Playbook</a>
-                <a href="#roster">Roster Specs</a>
-            </nav>
+    <!-- =========================================================
+         SCENE 1: BRUTALIST BASEMENT LAB (INTRO)
+         ========================================================= -->
+    <div id="intro-scene">
+        <div class="brutalist-room"></div>
+        <div class="concrete-pillar pillar-left"></div>
+        <div class="concrete-pillar pillar-right"></div>
+
+        <div class="ceiling-skylight">
+            <div class="skylight-pane"></div>
+            <div class="skylight-pane"></div>
+            <div class="skylight-pane"></div>
+            <div class="skylight-pane"></div>
+            <div class="skylight-pane"></div>
+            <div class="skylight-pane"></div>
         </div>
-    </header>
 
-    <main class="container">
+        <div class="instruction-banner">
+            <h2>SYSTEM OFFLINE</h2>
+            <p>DRAG ARC REACTOR TO THE SUIT TO INITIALIZE PROTOCOL</p>
+        </div>
 
-        <!-- Matchup Title Card (Hero) -->
-        <section class="matchup-hero">
-            <div class="live-tag">LIVE FROM SAN LUIS OBISPO, CA</div>
-            <h1 class="matchup-title">MASON DI LEO</h1>
-            <div class="sub-header-banner">BUSINESS ADMINISTRATION & INFORMATION SYSTEMS</div>
-            
-            <p style="font-size: 1.3rem; max-width: 800px; margin: 0 auto; color: var(--retro-cream);">
-                Sophomore at Cal Poly SLO[cite: 1]. Founder & iOS Developer turning spoken thoughts into actionable app prompts[cite: 1, 2]. Former Social Media Operations Manager who scaled NBA.Downtown to 160K followers[cite: 1, 2].
-            </p>
+        <!-- Inactive Iron Man Suit -->
+        <div id="iron-suit">
+            <svg class="suit-svg" viewBox="0 0 100 200">
+                <!-- Helmet -->
+                <path d="M30 10 Q50 0 70 10 L75 35 L65 55 L35 55 L25 35 Z" />
+                <rect class="suit-eye" x="35" y="28" width="10" height="3" rx="1" />
+                <rect class="suit-eye" x="55" y="28" width="10" height="3" rx="1" />
+                <!-- Shoulders & Torso -->
+                <path d="M20 55 L35 55 L50 60 L65 55 L80 55 L90 80 L75 120 L25 120 L10 80 Z" />
+                <!-- Chest Arc Socket -->
+                <circle class="suit-chest-socket" cx="50" cy="80" r="10" />
+                <!-- Arms -->
+                <rect x="5" y="80" width="12" height="60" rx="4" />
+                <rect x="83" y="80" width="12" height="60" rx="4" />
+                <!-- Legs -->
+                <rect x="28" y="122" width="18" height="70" rx="3" />
+                <rect x="54" y="122" width="18" height="70" rx="3" />
+            </svg>
+        </div>
 
-            <div class="stats-ticker-bar">
-                <div class="stat-box">
-                    <div class="stat-number">4.0</div>
-                    <div class="stat-label">MAJOR GPA[cite: 1]</div>
+        <!-- Pedestal and Glowing Arc Reactor -->
+        <div class="pedestal-table"></div>
+        <div id="arc-reactor">
+            <div class="reactor-core">
+                <div class="reactor-inner-ring"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- White Flash Transition Effect -->
+    <div id="repulsor-flash"></div>
+
+    <!-- =========================================================
+         SCENE 2: STARK HUD MAIN PORTFOLIO
+         ========================================================= -->
+    <div id="hud-portfolio">
+        <div class="hud-grid-overlay"></div>
+
+        <div class="hud-container">
+            <!-- Header -->
+            <header class="hud-header">
+                <div class="hud-title-zone">
+                    <h1>MASON DI LEO</h1>
+                    <p>BUSINESS ADMINISTRATION & INFORMATION SYSTEMS // CAL POLY SLO[cite: 1]</p>
                 </div>
-                <div class="stat-box">
-                    <div class="stat-number">3.85</div>
-                    <div class="stat-label">CUMULATIVE GPA[cite: 1]</div>
+                <div class="system-status">
+                    <div>MARK VII OS: <span class="status-online">ONLINE</span></div>
+                    <div>LOCATION: SAN LUIS OBISPO, CA</div>
                 </div>
-                <div class="stat-box">
-                    <div class="stat-number">160K</div>
-                    <div class="stat-label">INSTAGRAM AUDIENCE SCALED[cite: 1, 2]</div>
+            </header>
+
+            <!-- Metrics Overview -->
+            <div class="diagnostics-grid">
+                <div class="hud-card">
+                    <div class="hud-card-title">MAJOR GPA</div>
+                    <div class="hud-card-value">4.0</div>
+                    <div class="hud-card-sub">CAL POLY SLO[cite: 1]</div>
                 </div>
-                <div class="stat-box">
-                    <div class="stat-number">2029</div>
-                    <div class="stat-label">GRADUATION YEAR[cite: 1, 2]</div>
+                <div class="hud-card">
+                    <div class="hud-card-title">CUMULATIVE GPA</div>
+                    <div class="hud-card-value">3.85</div>
+                    <div class="hud-card-sub">ACADEMIC DISTINCTION[cite: 1]</div>
+                </div>
+                <div class="hud-card">
+                    <div class="hud-card-title">AUDIENCE REACH</div>
+                    <div class="hud-card-value">160K</div>
+                    <div class="hud-card-sub">INSTAGRAM FOLLOWERS SCALED[cite: 1, 2]</div>
+                </div>
+                <div class="hud-card">
+                    <div class="hud-card-title">PROJECT STATUS</div>
+                    <div class="hud-card-value" style="color: var(--stark-gold); font-size: 1.8rem;">ACTIVE</div>
+                    <div class="hud-card-sub">HOLD THIS THOUGHT APP[cite: 1, 2]</div>
                 </div>
             </div>
-        </section>
 
-        <!-- Honors & Accolades Section -->
-        <section id="honors">
-            <div class="broadcast-section-title">
-                <span>OFFICIAL TROPHY CASE</span>
-                <span style="font-size: 1.2rem;">HONORS & AWARDS</span>
+            <!-- Navigation Filter -->
+            <div class="hud-nav">
+                <button class="hud-tab-btn active" onclick="switchTab('experience')">EXPERIENCE LOG</button>
+                <button class="hud-tab-btn" onclick="switchTab('honors')">HONORS & TROPHIES</button>
+                <button class="hud-tab-btn" onclick="switchTab('specs')">SYSTEM SPECS & SKILLS</button>
             </div>
 
-            <div class="honors-grid">
-                <div class="honor-card">
-                    <h3>BOARD OF DIRECTORS AWARD</h3>
-                    <p>Community Service Award[cite: 2]</p>
+            <!-- TAB 1: EXPERIENCE LOG -->
+            <div id="tab-experience" class="hud-module">
+                <div class="module-header">
+                    <span>CAREER TELEMETRY & PROJECTS</span>
+                    <span style="font-size: 0.85rem; color: var(--arc-blue);">DATA UNITS: 6 RECORDED</span>
                 </div>
-                <div class="honor-card">
-                    <h3>BUSINESS HONORS AWARD</h3>
-                    <p>Cal Poly Academic Distinction[cite: 2]</p>
-                </div>
-                <div class="honor-card">
-                    <h3>GREEN AND WHITE AWARD</h3>
-                    <p>Institutional Excellence Award[cite: 2]</p>
-                </div>
-                <div class="honor-card">
-                    <h3>DEAN'S LIST</h3>
-                    <p>Academic Honors[cite: 2]</p>
-                </div>
-            </div>
-        </section>
 
-        <!-- Experience Playbook Section -->
-        <section id="playbook">
-            <div class="broadcast-section-title">
-                <span>THE PLAYBOOK</span>
-                <span style="font-size: 1.2rem;">CAREER TELEMETRY</span>
-            </div>
-
-            <div class="schedule-controls">
-                <button class="channel-btn active" onclick="filterPlay('all', this)">ALL PLAYS</button>
-                <button class="channel-btn" onclick="filterPlay('dev', this)">APP DEV & PRODUCT</button>
-                <button class="channel-btn" onclick="filterPlay('ops', this)">OPERATIONS & LEADERSHIP</button>
-            </div>
-
-            <div class="playbook-stack">
-
-                <!-- Hold This Thought -->
-                <div class="play-card" data-category="dev">
-                    <div class="play-header">
-                        <div>
-                            <div class="play-title">FOUNDER & iOS DEVELOPER</div>
-                            <div class="play-team">Hold This Thought — Los Altos, CA[cite: 1, 2]</div>
-                        </div>
-                        <div class="play-time">AUG 2026 — PRESENT[cite: 1, 2]</div>
-                    </div>
-                    <ul class="play-bullets">
+                <div class="experience-node">
+                    <div class="node-role">FOUNDER & iOS DEVELOPER</div>
+                    <div class="node-company">Hold This Thought — Los Altos, CA[cite: 1, 2]</div>
+                    <div class="node-time">AUG 2026 — PRESENT[cite: 1, 2]</div>
+                    <ul class="node-bullets">
                         <li>Developing a native iOS reminder app in Swift that turns spoken or typed thoughts into time, location, calendar, and event-aware prompts[cite: 1].</li>
                         <li>Leading product direction, interface design, and iOS development while refining the voice-first experience[cite: 2].</li>
                         <li>Built workflows for photo attachment, widgets, notifications, alarms, and saved locations[cite: 1].</li>
@@ -506,16 +629,11 @@
                     </ul>
                 </div>
 
-                <!-- Cal Poly Assistant -->
-                <div class="play-card" data-category="ops">
-                    <div class="play-header">
-                        <div>
-                            <div class="play-title">INSTRUCTIONAL STUDENT ASSISTANT — STATISTICS</div>
-                            <div class="play-team">Cal Poly State University — San Luis Obispo, CA[cite: 1, 2]</div>
-                        </div>
-                        <div class="play-time">JAN 2026 — PRESENT[cite: 1, 2]</div>
-                    </div>
-                    <ul class="play-bullets">
+                <div class="experience-node">
+                    <div class="node-role">INSTRUCTIONAL STUDENT ASSISTANT — STATISTICS</div>
+                    <div class="node-company">Cal Poly State University — San Luis Obispo, CA[cite: 1, 2]</div>
+                    <div class="node-time">JAN 2026 — PRESENT[cite: 1, 2]</div>
+                    <ul class="node-bullets">
                         <li>Tutor 80+ undergraduate students by explaining statistical concepts and guiding problem-solving[cite: 1].</li>
                         <li>Support faculty with instructional delivery, assisting with course materials and classroom logistics[cite: 2].</li>
                         <li>Grade 6 weekly assignments, labs, and quizzes with digital accuracy[cite: 1, 2].</li>
@@ -523,16 +641,11 @@
                     </ul>
                 </div>
 
-                <!-- Shockproof Training -->
-                <div class="play-card" data-category="dev">
-                    <div class="play-header">
-                        <div>
-                            <div class="play-title">PRODUCT INNOVATION INTERN</div>
-                            <div class="play-team">Shockproof Training[cite: 1, 2]</div>
-                        </div>
-                        <div class="play-time">JUN 2025 — SEP 2025[cite: 1, 2]</div>
-                    </div>
-                    <ul class="play-bullets">
+                <div class="experience-node">
+                    <div class="node-role">PRODUCT INNOVATION INTERN</div>
+                    <div class="node-company">Shockproof Training[cite: 1, 2]</div>
+                    <div class="node-time">JUN 2025 — SEP 2025[cite: 1, 2]</div>
+                    <ul class="node-bullets">
                         <li>Collaborated directly with CEO to modernize and relaunch digital compliance training modules[cite: 1, 2].</li>
                         <li>Redesigned 2 product training modules with brand new features and user interface[cite: 1, 2].</li>
                         <li>Developed and presented a product pitch to the company board on AI integration[cite: 1].</li>
@@ -540,188 +653,201 @@
                     </ul>
                 </div>
 
-                <!-- NBA.Downtown -->
-                <div class="play-card" data-category="ops">
-                    <div class="play-header">
-                        <div>
-                            <div class="play-title">OPERATIONS MANAGER</div>
-                            <div class="play-team">NBA.Downtown (Social Media Brand)[cite: 1, 2]</div>
-                        </div>
-                        <div class="play-time">JUN 2021 — SEP 2024[cite: 1, 2]</div>
-                    </div>
-                    <ul class="play-bullets">
+                <div class="experience-node">
+                    <div class="node-role">OPERATIONS MANAGER</div>
+                    <div class="node-company">NBA.Downtown (Social Media Brand)[cite: 1, 2]</div>
+                    <div class="node-time">JUN 2021 — SEP 2024[cite: 1, 2]</div>
+                    <ul class="node-bullets">
                         <li>Grew and scaled Instagram following from 35K to 160K+ followers by optimizing niche content strategy[cite: 1, 2].</li>
                         <li>Secured high-value sponsorship deals with companies including DraftKings and UFC[cite: 1, 2].</li>
                         <li>Created engaging environment with graphics and statistics featured in 10+ posts per week[cite: 1, 2].</li>
                     </ul>
                 </div>
 
-                <!-- Mason's Pool Cleaning -->
-                <div class="play-card" data-category="ops">
-                    <div class="play-header">
-                        <div>
-                            <div class="play-title">FOUNDER & SERVICE TECHNICIAN</div>
-                            <div class="play-team">Mason's Pool Cleaning[cite: 1, 2]</div>
-                        </div>
-                        <div class="play-time">JUN 2022 — SEP 2025[cite: 1, 2]</div>
-                    </div>
-                    <ul class="play-bullets">
+                <div class="experience-node">
+                    <div class="node-role">FOUNDER & SERVICE TECHNICIAN</div>
+                    <div class="node-company">Mason's Pool Cleaning[cite: 1, 2]</div>
+                    <div class="node-time">JUN 2022 — SEP 2025[cite: 1, 2]</div>
+                    <ul class="node-bullets">
                         <li>Founded and scaled a profitable small business, managing overall business operations and receivables[cite: 1, 2].</li>
                         <li>Diagnosed and repaired complex swimming pool and water feature systems[cite: 1, 2].</li>
                         <li>Delivered monthly invoices and managed client relationships[cite: 1, 2].</li>
                     </ul>
                 </div>
-
-                <!-- Camp Counselor -->
-                <div class="play-card" data-category="ops">
-                    <div class="play-header">
-                        <div>
-                            <div class="play-title">CAMP COUNSELOR</div>
-                            <div class="play-team">Golden Eagle Summer Sports Camp[cite: 2]</div>
-                        </div>
-                        <div class="play-time">JUN 2024 — AUG 2024[cite: 2]</div>
-                    </div>
-                    <ul class="play-bullets">
-                        <li>Led groups of campers in daily sports and team-building activities, fostering collaboration[cite: 2].</li>
-                        <li>Communicated effectively with parents and staff to ensure safe operations[cite: 2].</li>
-                    </ul>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Roster Specifications (Education & Skills) -->
-        <section id="roster">
-            <div class="broadcast-section-title">
-                <span>TEAM ROSTER SPECS</span>
-                <span style="font-size: 1.2rem;">EDUCATION & SKILLS</span>
             </div>
 
-            <div class="two-column">
-
-                <!-- Education Card -->
-                <div class="teleprompter-box">
-                    <div class="prompter-header">ACADEMIC BROADCAST DATA</div>
-                    <div class="prompter-row">
-                        <span>UNIVERSITY:</span>
-                        <span>Cal Poly SLO[cite: 1, 2]</span>
+            <!-- TAB 2: HONORS -->
+            <div id="tab-honors" class="hud-module" style="display: none;">
+                <div class="module-header">ACADEMIC & COMMUNITY HONORS</div>
+                <div class="diagnostics-grid">
+                    <div class="hud-card" style="border-left-color: var(--stark-gold);">
+                        <div class="hud-card-title">ACADEMIC AWARD</div>
+                        <div style="font-size: 1.3rem; font-weight: bold; color: #fff; margin: 0.5rem 0;">BUSINESS HONORS AWARD</div>
+                        <div class="hud-card-sub">Cal Poly Academic Distinction[cite: 2]</div>
                     </div>
-                    <div class="prompter-row">
-                        <span>DEGREE:</span>
-                        <span>B.S. Business Admin (IS)[cite: 1, 2]</span>
+                    <div class="hud-card" style="border-left-color: var(--stark-gold);">
+                        <div class="hud-card-title">COMMUNITY SERVICE</div>
+                        <div style="font-size: 1.3rem; font-weight: bold; color: #fff; margin: 0.5rem 0;">BOARD OF DIRECTORS AWARD</div>
+                        <div class="hud-card-sub">Community Service Honor[cite: 2]</div>
                     </div>
-                    <div class="prompter-row">
-                        <span>EXPECTED GRAD:</span>
-                        <span>2029 (Sophomore)[cite: 1, 2]</span>
+                    <div class="hud-card" style="border-left-color: var(--stark-gold);">
+                        <div class="hud-card-title">INSTITUTIONAL HONOR</div>
+                        <div style="font-size: 1.3rem; font-weight: bold; color: #fff; margin: 0.5rem 0;">GREEN AND WHITE AWARD</div>
+                        <div class="hud-card-sub">Institutional Excellence[cite: 2]</div>
                     </div>
-                    <div class="prompter-row">
-                        <span>CUMULATIVE GPA:</span>
-                        <span style="color: var(--madden-orange);">3.85[cite: 1]</span>
-                    </div>
-                    <div class="prompter-row">
-                        <span>MAJOR GPA:</span>
-                        <span style="color: var(--madden-orange);">4.0[cite: 1]</span>
-                    </div>
-                    <div class="prompter-row">
-                        <span>COURSEWORK:</span>
-                        <span>Business Law, Stats, Accounting[cite: 1]</span>
-                    </div>
-
-                    <div style="margin-top: 1rem; padding-top: 0.5rem; border-top: 2px dashed var(--cbs-blue);">
-                        <div style="font-family: 'Impact', sans-serif; font-size: 1.3rem;">LONDON SCHOOL OF ECONOMICS (LSE)[cite: 1, 2]</div>
-                        <div style="font-size: 1.1rem;">Summer Coursework (June–July 2026): AI in Business: Machine Learning + Data Strategy[cite: 1, 2]</div>
-                    </div>
-
-                    <div style="margin-top: 0.5rem;">
-                        <div style="font-family: 'Impact', sans-serif; font-size: 1.3rem;">HOMESTEAD HIGH SCHOOL[cite: 2]</div>
-                        <div style="font-size: 1.1rem;">(2021 — June 2025)[cite: 2]</div>
+                    <div class="hud-card" style="border-left-color: var(--stark-gold);">
+                        <div class="hud-card-title">SCHOLASTIC RECOGNITION</div>
+                        <div style="font-size: 1.3rem; font-weight: bold; color: #fff; margin: 0.5rem 0;">DEAN'S LIST</div>
+                        <div class="hud-card-sub">Academic Honors[cite: 2]</div>
                     </div>
                 </div>
-
-                <!-- Skills & Certifications Card -->
-                <div class="teleprompter-box">
-                    <div class="prompter-header">EQUIPMENT & MODIFICATIONS</div>
-
-                    <div style="margin-bottom: 1rem;">
-                        <div style="font-weight: 700; font-size: 1.2rem;">TECHNICAL SKILLS</div>
-                        <div class="tag-group">
-                            <span class="badge-tag">Swift (iOS)</span>
-                            <span class="badge-tag">SQL</span>
-                            <span class="badge-tag">Vibe Coding</span>
-                            <span class="badge-tag">Tableau</span>
-                            <span class="badge-tag">Microsoft Excel</span>
-                            <span class="badge-tag">PowerPoint</span>
-                            <span class="badge-tag">Canva</span>
-                        </div>
-                    </div>
-
-                    <div style="margin-bottom: 1rem;">
-                        <div style="font-weight: 700; font-size: 1.2rem;">CERTIFICATIONS</div>
-                        <div class="tag-group">
-                            <span class="badge-tag">SQL Essential Training</span>
-                            <span class="badge-tag">Excel Essential Training (Microsoft 365)</span>
-                        </div>
-                    </div>
-
-                    <div style="margin-bottom: 1rem;">
-                        <div style="font-weight: 700; font-size: 1.2rem;">LEADERSHIP</div>
-                        <div style="font-size: 1.1rem;"><strong>AVID Tutoring Program — Peer Tutor[cite: 1]</strong></div>
-                        <div style="font-size: 1rem;">Aug 2023 – Jun 2025 | Supported 30 students in math, science, English & foreign language[cite: 1].</div>
-                    </div>
-
-                    <div>
-                        <div style="font-weight: 700; font-size: 1.2rem;">INTERESTS</div>
-                        <div class="tag-group">
-                            <span class="badge-tag">Weightlifting</span>
-                            <span class="badge-tag">San Francisco Giants</span>
-                            <span class="badge-tag">Porsche 962</span>
-                            <span class="badge-tag">1960s Ford GT40</span>
-                        </div>
-                    </div>
-                </div>
-
             </div>
-        </section>
 
-    </main>
+            <!-- TAB 3: SYSTEM SPECS -->
+            <div id="tab-specs" class="hud-module" style="display: none;">
+                <div class="module-header">HARDWARE & SOFTWARE SKILLS</div>
+                
+                <p style="color: var(--stark-gold); margin-bottom: 0.5rem;">PRIMARY PROGRAMMING & TOOLS</p>
+                <div class="skills-grid" style="margin-bottom: 1.5rem;">
+                    <span class="skill-tag">Swift (iOS Native)</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Vibe Coding</span>
+                    <span class="skill-tag">Tableau</span>
+                    <span class="skill-tag">Microsoft Excel</span>
+                    <span class="skill-tag">PowerPoint</span>
+                    <span class="skill-tag">Canva</span>
+                </div>
 
-    <!-- Bottom Scoreboard Broadcast Ticker -->
-    <div class="bottom-ticker">
-        <div class="ticker-label">BREAKING UPDATE</div>
-        <div class="ticker-text" id="broadcastTicker">
-            MASON DI LEO // CURRENTLY DEVELOPING VOICE-FIRST IOS APP "HOLD THIS THOUGHT" // 4.0 MAJOR GPA AT CAL POLY SLO // OPEN TO RECRUITING OPPORTUNITIES...
+                <p style="color: var(--stark-gold); margin-bottom: 0.5rem;">SPECIALIZED CERTIFICATIONS</p>
+                <div class="skills-grid" style="margin-bottom: 1.5rem;">
+                    <span class="skill-tag">SQL Essential Training</span>
+                    <span class="skill-tag">Excel Essential Training (Microsoft 365)</span>
+                </div>
+
+                <p style="color: var(--stark-gold); margin-bottom: 0.5rem;">EDUCATION LOG</p>
+                <div style="background: rgba(0,0,0,0.4); padding: 1rem; border-left: 2px solid var(--stark-gold);">
+                    <div style="font-weight: bold; color: #fff;">LONDON SCHOOL OF ECONOMICS (LSE)[cite: 1, 2]</div>
+                    <div style="font-size: 0.9rem; color: #8a99ad;">Summer 2026: AI in Business: Machine Learning & Data Strategy[cite: 1, 2]</div>
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <script>
-        // Interactive Playbook Filtering
-        function filterPlay(category, btn) {
-            const buttons = document.querySelectorAll('.schedule-controls .channel-btn');
-            buttons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+    <!-- HUD Bottom Status Bar -->
+    <div class="hud-footer">
+        <div>JARVIS CORE VERSION 4.0.1</div>
+        <div>ALL SYSTEMS OPERATIONAL</div>
+    </div>
 
-            const cards = document.querySelectorAll('.play-card');
-            cards.forEach(card => {
-                if (category === 'all' || card.getAttribute('data-category') === category) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+    <!-- Drag & Drop Interactive Script -->
+    <script>
+        const arcReactor = document.getElementById('arc-reactor');
+        const ironSuit = document.getElementById('iron-suit');
+        const introScene = document.getElementById('intro-scene');
+        const flashOverlay = document.getElementById('repulsor-flash');
+        const hudPortfolio = document.getElementById('hud-portfolio');
+
+        let isDragging = false;
+        let startX, startY, initialLeft, initialTop;
+
+        // Mouse & Touch Drag Handlers
+        arcReactor.addEventListener('mousedown', startDrag);
+        arcReactor.addEventListener('touchstart', startDrag, { passive: false });
+
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('touchmove', drag, { passive: false });
+
+        document.addEventListener('mouseup', endDrag);
+        document.addEventListener('touchend', endDrag);
+
+        function startDrag(e) {
+            isDragging = true;
+            const event = e.touches ? e.touches[0] : e;
+            startX = event.clientX;
+            startY = event.clientY;
+            
+            const rect = arcReactor.getBoundingClientRect();
+            initialLeft = rect.left;
+            initialTop = rect.top;
+
+            arcReactor.style.position = 'fixed';
+            arcReactor.style.left = `${initialLeft}px`;
+            arcReactor.style.top = `${initialTop}px`;
+            arcReactor.style.bottom = 'auto';
+            arcReactor.style.transform = 'none';
         }
 
-        // Animated Scoreboard Text Updates
-        const tickerMessages = [
-            "MASON DI LEO // CURRENTLY DEVELOPING VOICE-FIRST IOS APP 'HOLD THIS THOUGHT' // 4.0 MAJOR GPA AT CAL POLY SLO...",
-            "RECRUITMENT SUMMARY // FORMER OPERATIONS MANAGER AT NBA.DOWNTOWN // SCALED INSTAGRAM AUDIENCE TO 160K FOLLOWERS...",
-            "ACADEMICS // COMPLETED LSE SUMMER PROGRAM IN AI IN BUSINESS: MACHINE LEARNING & DATA STRATEGY..."
-        ];
-        let msgIndex = 0;
+        function drag(e) {
+            if (!isDragging) return;
+            if (e.cancelable) e.preventDefault();
 
-        setInterval(() => {
-            msgIndex = (msgIndex + 1) % tickerMessages.length;
-            document.getElementById('broadcastTicker').innerText = tickerMessages[msgIndex];
-        }, 6000);
+            const event = e.touches ? e.touches[0] : e;
+            const dx = event.clientX - startX;
+            const dy = event.clientY - startY;
+
+            arcReactor.style.left = `${initialLeft + dx}px`;
+            arcReactor.style.top = `${initialTop + dy}px`;
+
+            checkCollision();
+        }
+
+        function endDrag() {
+            isDragging = false;
+        }
+
+        function checkCollision() {
+            const arcRect = arcReactor.getBoundingClientRect();
+            const suitRect = ironSuit.getBoundingClientRect();
+
+            // Collision detection check
+            const overlap = !(arcRect.right < suitRect.left || 
+                              arcRect.left > suitRect.right || 
+                              arcRect.bottom < suitRect.top || 
+                              arcRect.top > suitRect.bottom);
+
+            if (overlap) {
+                triggerSuitActivation();
+            }
+        }
+
+        function triggerSuitActivation() {
+            // Disable further dragging
+            isDragging = false;
+            document.removeEventListener('mousemove', drag);
+            document.removeEventListener('touchmove', drag);
+
+            // Snaps reactor onto suit chest
+            arcReactor.style.opacity = '0';
+            ironSuit.classList.add('powered');
+
+            // Suit takeoff animation sequence
+            setTimeout(() => {
+                ironSuit.style.transform = 'translateY(-80px) scale(1.1)';
+            }, 600);
+
+            // Shoot Repulsor Beam Transition
+            setTimeout(() => {
+                flashOverlay.style.opacity = '1';
+            }, 1200);
+
+            // Switch to STARK HUD Portfolio
+            setTimeout(() => {
+                introScene.style.display = 'none';
+                hudPortfolio.classList.add('visible');
+                flashOverlay.style.opacity = '0';
+            }, 1800);
+        }
+
+        // Tab Switching Functionality
+        function switchTab(tabName) {
+            document.querySelectorAll('.hud-tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            document.getElementById('tab-experience').style.display = tabName === 'experience' ? 'block' : 'none';
+            document.getElementById('tab-honors').style.display = tabName === 'honors' ? 'block' : 'none';
+            document.getElementById('tab-specs').style.display = tabName === 'specs' ? 'block' : 'none';
+        }
     </script>
 </body>
 </html>
