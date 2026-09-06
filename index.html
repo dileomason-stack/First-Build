@@ -3,22 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mason Di Leo — Dashboard</title>
+    <title>Mason Di Leo — Sports Broadcast Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@700;900&family=Impact&family=Teko:wght@600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --singer-orange: #d9531e;
-            --singer-orange-glow: rgba(217, 83, 30, 0.25);
-            --porsche-gold: #c5a059;
-            --asphalt-dark: #121417;
-            --chassis-card: #1c1f26;
-            --gauge-dial: #242831;
-            --text-primary: #f1f5f9;
-            --text-secondary: #94a3b8;
-            --border-line: #2e3440;
-            --tachometer-redline: #ef4444;
+            --vintage-gold: #f2a900;
+            --gold-3d: #b87b00;
+            --cbs-blue: #0b1a30;
+            --retro-cream: #f4ebd0;
+            --grass-green: #1d5227;
+            --field-stripe: rgba(255, 255, 255, 0.08);
+            --chalk-white: #ffffff;
+            --shadow-black: #050a12;
+            --madden-orange: #d94a1e;
         }
 
         * {
@@ -28,22 +27,23 @@
         }
 
         body {
-            background-color: var(--asphalt-dark);
-            color: var(--text-primary);
-            font-family: 'Outfit', sans-serif;
-            line-height: 1.6;
-            padding-bottom: 5rem;
+            background-color: var(--grass-green);
             background-image: 
-                radial-gradient(circle at 15% 15%, rgba(217, 83, 30, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 85% 85%, rgba(197, 160, 89, 0.05) 0%, transparent 40%);
-            background-attachment: fixed;
+                linear-gradient(0deg, var(--field-stripe) 50%, transparent 50%),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 100% 120px, 40px 100%;
+            color: var(--chalk-white);
+            font-family: 'Teko', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-bottom: 6rem;
         }
 
-        /* Top Navigation Header */
-        header {
-            background-color: rgba(18, 20, 23, 0.9);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-line);
+        /* Top 80s Broadcast Header Banner */
+        .network-banner {
+            background: linear-gradient(180deg, #1c2d4a 0%, var(--cbs-blue) 100%);
+            border-bottom: 6px solid var(--vintage-gold);
+            box-shadow: 0 8px 0 var(--shadow-black);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -52,729 +52,630 @@
         .header-container {
             max-width: 1100px;
             margin: 0 auto;
+            padding: 0.75rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.25rem 1.5rem;
         }
 
-        .badge-logo {
+        .broadcast-logo {
             display: flex;
             align-items: center;
             gap: 0.75rem;
             text-decoration: none;
-            color: var(--text-primary);
         }
 
-        .singer-crest {
-            width: 32px;
-            height: 32px;
-            background: var(--singer-orange);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Space Mono', monospace;
-            font-weight: 700;
-            font-size: 0.9rem;
-            color: #fff;
-            box-shadow: 0 0 10px var(--singer-orange-glow);
-            border: 2px solid var(--porsche-gold);
-        }
-
-        .logo-text {
-            font-weight: 800;
+        .eye-logo {
+            background: var(--vintage-gold);
+            color: var(--cbs-blue);
+            font-family: 'Impact', sans-serif;
             font-size: 1.2rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            box-shadow: 2px 2px 0 var(--shadow-black);
+        }
+
+        .network-title {
+            font-family: 'Impact', sans-serif;
+            font-size: 2rem;
+            color: var(--vintage-gold);
+            text-shadow: 3px 3px 0 var(--shadow-black), -1px -1px 0 #fff;
             letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .logo-text span {
-            color: var(--singer-orange);
-        }
-
-        nav {
-            display: flex;
-            gap: 1.5rem;
         }
 
         nav a {
-            color: var(--text-secondary);
+            color: var(--retro-cream);
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.2s;
+            font-size: 1.4rem;
+            margin-left: 1.5rem;
+            font-weight: 700;
+            transition: color 0.2s;
+            text-shadow: 2px 2px 0 var(--shadow-black);
         }
 
         nav a:hover {
-            color: var(--singer-orange);
+            color: var(--vintage-gold);
         }
 
-        /* Container Layout */
         .container {
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 1.5rem;
         }
 
-        /* Hero / Instrument Cluster Section */
-        .dashboard-hero {
-            margin-top: 3rem;
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .driver-card {
-            background: var(--chassis-card);
-            border: 1px solid var(--border-line);
-            border-left: 4px solid var(--singer-orange);
-            border-radius: 8px;
-            padding: 2.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .driver-card::before {
-            content: 'SPECIFICATION NO. 962';
-            position: absolute;
-            top: 1rem;
-            right: 1.5rem;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.7rem;
-            color: var(--text-secondary);
-            letter-spacing: 2px;
-        }
-
-        .driver-title {
-            color: var(--porsche-gold);
-            font-family: 'Space Mono', monospace;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-        }
-
-        .driver-name {
-            font-size: 3rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1rem;
-            letter-spacing: -0.5px;
-        }
-
-        .driver-bio {
-            color: var(--text-secondary);
-            font-size: 1.05rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-bar {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.85rem;
-        }
-
-        .contact-item {
-            background: var(--gauge-dial);
-            padding: 0.4rem 0.8rem;
-            border-radius: 4px;
-            border: 1px solid var(--border-line);
-            color: var(--text-primary);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: border-color 0.2s;
-        }
-
-        .contact-item:hover {
-            border-color: var(--singer-orange);
-        }
-
-        /* Gauge Display (Telemetry) */
-        .telemetry-cluster {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .gauge {
-            background: var(--chassis-card);
-            border: 1px solid var(--border-line);
-            border-radius: 8px;
-            padding: 1.25rem;
+        /* Matchup Overlay / Main Title Card */
+        .matchup-hero {
+            margin-top: 2.5rem;
+            background: var(--cbs-blue);
+            border: 5px solid var(--vintage-gold);
+            box-shadow: 10px 10px 0 var(--shadow-black);
+            padding: 2rem;
             text-align: center;
             position: relative;
         }
 
-        .gauge-value {
-            font-family: 'Space Mono', monospace;
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--singer-orange);
-            line-height: 1;
-        }
-
-        .gauge-label {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-top: 0.5rem;
-        }
-
-        /* Dashboard Section Headers */
-        .section-header {
-            margin-top: 4rem;
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid var(--border-line);
-            padding-bottom: 0.75rem;
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .section-title::before {
-            content: '';
+        .live-tag {
+            background: var(--madden-orange);
+            color: var(--chalk-white);
+            font-family: 'Chivo Mono', monospace;
+            font-size: 1rem;
+            padding: 0.2rem 1rem;
             display: inline-block;
-            width: 12px;
-            height: 12px;
-            background-color: var(--singer-orange);
-            border-radius: 2px;
-        }
-
-        .section-tag {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--porsche-gold);
-        }
-
-        /* Accolades & Achievements (Chrono Cluster) */
-        .accolades-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .accolade-card {
-            background: var(--chassis-card);
-            border: 1px solid var(--border-line);
-            border-radius: 8px;
-            padding: 1.5rem;
-            position: relative;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-
-        .accolade-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--porsche-gold);
-        }
-
-        .accolade-icon {
-            color: var(--porsche-gold);
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .accolade-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 0.25rem;
-        }
-
-        .accolade-sub {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        /* Interactive Section: Drive Modes / Telemetry Selector */
-        .selector-controls {
-            display: flex;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .mode-btn {
-            background: var(--gauge-dial);
-            border: 1px solid var(--border-line);
-            color: var(--text-secondary);
-            padding: 0.6rem 1.2rem;
-            border-radius: 4px;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .mode-btn:hover, .mode-btn.active {
-            background: var(--singer-orange);
-            color: #fff;
-            border-color: var(--singer-orange);
-            box-shadow: 0 0 10px var(--singer-orange-glow);
-        }
-
-        /* Track Log / Experience Timeline */
-        .experience-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .track-card {
-            background: var(--chassis-card);
-            border: 1px solid var(--border-line);
-            border-radius: 8px;
-            padding: 1.75rem;
-            position: relative;
-        }
-
-        .track-card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
+            border: 2px solid var(--chalk-white);
+            box-shadow: 3px 3px 0 var(--shadow-black);
             margin-bottom: 1rem;
-            flex-wrap: wrap;
-            gap: 0.5rem;
         }
 
-        .role-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-        }
-
-        .company-name {
-            color: var(--porsche-gold);
-            font-weight: 500;
-        }
-
-        .time-badge {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.75rem;
-            background: var(--gauge-dial);
-            border: 1px solid var(--border-line);
-            padding: 0.25rem 0.6rem;
-            border-radius: 4px;
-            color: var(--text-secondary);
-        }
-
-        .bullet-list {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .bullet-list li {
-            position: relative;
-            padding-left: 1.5rem;
+        .matchup-title {
+            font-family: 'Impact', sans-serif;
+            font-size: 4rem;
+            line-height: 0.95;
+            color: var(--vintage-gold);
+            text-shadow: 4px 4px 0 var(--shadow-black), -2px -2px 0 var(--gold-3d);
             margin-bottom: 0.5rem;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
         }
 
-        .bullet-list li::before {
-            content: '>';
-            position: absolute;
-            left: 0;
-            color: var(--singer-orange);
-            font-family: 'Space Mono', monospace;
+        .sub-header-banner {
+            background: var(--retro-cream);
+            color: var(--cbs-blue);
+            font-size: 1.8rem;
             font-weight: 700;
+            padding: 0.2rem 1rem;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            box-shadow: 4px 4px 0 var(--shadow-black);
         }
 
-        /* Grid Layouts for Education & Skills */
-        .two-column {
+        .stats-ticker-bar {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-
-        .spec-box {
-            background: var(--chassis-card);
-            border: 1px solid var(--border-line);
-            border-radius: 8px;
-            padding: 1.75rem;
-        }
-
-        .spec-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid var(--border-line);
-            font-size: 0.95rem;
-        }
-
-        .spec-row:last-child {
-            border-bottom: none;
-        }
-
-        .spec-label {
-            color: var(--text-secondary);
-        }
-
-        .spec-value {
-            font-weight: 600;
-            text-align: right;
-        }
-
-        /* Tuning Specs (Skills & Interests Pills) */
-        .tag-cloud {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            background: #060d17;
+            border: 3px solid var(--vintage-gold);
+            padding: 1rem;
             margin-top: 1rem;
         }
 
-        .tag-pill {
-            background: var(--gauge-dial);
-            border: 1px solid var(--border-line);
-            color: var(--text-primary);
-            padding: 0.4rem 0.8rem;
-            border-radius: 4px;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.8rem;
-        }
-
-        .tag-pill.highlight {
-            border-color: var(--singer-orange);
-            color: var(--singer-orange);
-        }
-
-        /* Dynamic Gear Shift Switcher */
-        .shift-interactive {
-            background: var(--gauge-dial);
-            border: 1px solid var(--border-line);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-top: 3rem;
+        .stat-box {
             text-align: center;
         }
 
-        .gear-display {
-            font-family: 'Space Mono', monospace;
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--singer-orange);
-            margin: 0.5rem 0;
+        .stat-number {
+            font-family: 'Chivo Mono', monospace;
+            font-size: 2.5rem;
+            color: var(--vintage-gold);
+            line-height: 1;
         }
 
-        /* Responsive Breakpoints */
-        @media (max-width: 850px) {
-            .dashboard-hero {
-                grid-template-columns: 1fr;
-            }
-            .two-column {
-                grid-template-columns: 1fr;
-            }
-            .header-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--retro-cream);
+        }
+
+        /* Section Graphic Headers */
+        .broadcast-section-title {
+            margin-top: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--vintage-gold) 0%, var(--gold-3d) 100%);
+            color: var(--cbs-blue);
+            padding: 0.5rem 1.5rem;
+            font-family: 'Impact', sans-serif;
+            font-size: 2.2rem;
+            border: 3px solid var(--shadow-black);
+            box-shadow: 6px 6px 0 var(--shadow-black);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Honors Cards */
+        .honors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .honor-card {
+            background: var(--retro-cream);
+            color: var(--cbs-blue);
+            border: 4px solid var(--cbs-blue);
+            box-shadow: 6px 6px 0 var(--shadow-black);
+            padding: 1.25rem;
+            text-align: center;
+        }
+
+        .honor-card h3 {
+            font-family: 'Impact', sans-serif;
+            font-size: 1.5rem;
+            line-height: 1.1;
+            color: var(--madden-orange);
+            margin-bottom: 0.25rem;
+        }
+
+        .honor-card p {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        /* Program Schedule / Interactive Filter Controls */
+        .schedule-controls {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .channel-btn {
+            background: var(--cbs-blue);
+            color: var(--retro-cream);
+            border: 3px solid var(--vintage-gold);
+            padding: 0.4rem 1.2rem;
+            font-family: 'Impact', sans-serif;
+            font-size: 1.3rem;
+            cursor: pointer;
+            box-shadow: 4px 4px 0 var(--shadow-black);
+            transition: all 0.1s;
+        }
+
+        .channel-btn:hover, .channel-btn.active {
+            background: var(--madden-orange);
+            color: var(--chalk-white);
+            border-color: var(--chalk-white);
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 var(--shadow-black);
+        }
+
+        /* Experience Playbook Cards */
+        .playbook-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .play-card {
+            background: var(--cbs-blue);
+            border: 4px solid var(--retro-cream);
+            box-shadow: 8px 8px 0 var(--shadow-black);
+            padding: 1.5rem;
+        }
+
+        .play-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 2px dashed var(--vintage-gold);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .play-title {
+            font-family: 'Impact', sans-serif;
+            font-size: 1.8rem;
+            color: var(--vintage-gold);
+            line-height: 1;
+        }
+
+        .play-team {
+            font-size: 1.3rem;
+            color: var(--retro-cream);
+        }
+
+        .play-time {
+            background: var(--madden-orange);
+            color: var(--chalk-white);
+            font-family: 'Chivo Mono', monospace;
+            padding: 0.2rem 0.6rem;
+            font-size: 0.9rem;
+            border: 1px solid var(--chalk-white);
+        }
+
+        .play-bullets {
+            list-style: none;
+        }
+
+        .play-bullets li {
+            font-size: 1.25rem;
+            color: var(--chalk-white);
+            margin-bottom: 0.4rem;
+            position: relative;
+            padding-left: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .play-bullets li::before {
+            content: '►';
+            position: absolute;
+            left: 0;
+            color: var(--vintage-gold);
+        }
+
+        /* Two Column Layout for Specs */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .teleprompter-box {
+            background: var(--retro-cream);
+            color: var(--cbs-blue);
+            border: 4px solid var(--cbs-blue);
+            box-shadow: 8px 8px 0 var(--shadow-black);
+            padding: 1.5rem;
+        }
+
+        .prompter-header {
+            font-family: 'Impact', sans-serif;
+            font-size: 1.8rem;
+            color: var(--cbs-blue);
+            border-bottom: 3px solid var(--madden-orange);
+            margin-bottom: 1rem;
+        }
+
+        .prompter-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.25rem;
+            font-weight: 700;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid rgba(11, 26, 48, 0.2);
+        }
+
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .badge-tag {
+            background: var(--cbs-blue);
+            color: var(--vintage-gold);
+            padding: 0.2rem 0.6rem;
+            font-family: 'Chivo Mono', monospace;
+            font-size: 0.9rem;
+            border: 1px solid var(--shadow-black);
+        }
+
+        /* Interactive Bottom Scoreboard Ticker */
+        .bottom-ticker {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--cbs-blue);
+            border-top: 4px solid var(--vintage-gold);
+            padding: 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            z-index: 200;
+            box-shadow: 0 -4px 10px var(--shadow-black);
+        }
+
+        .ticker-label {
+            background: var(--madden-orange);
+            color: var(--chalk-white);
+            font-family: 'Impact', sans-serif;
+            font-size: 1.2rem;
+            padding: 0.2rem 0.8rem;
+            margin-right: 1rem;
+            white-space: nowrap;
+        }
+
+        .ticker-text {
+            font-family: 'Chivo Mono', monospace;
+            font-size: 1.1rem;
+            color: var(--vintage-gold);
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        @media (max-width: 800px) {
+            .matchup-title { font-size: 2.5rem; }
+            .two-column { grid-template-columns: 1fr; }
+            .header-container { flex-direction: column; gap: 0.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Navigation -->
-    <header>
+    <!-- Broadcast Network Header Banner -->
+    <header class="network-banner">
         <div class="header-container">
-            <a href="#" class="badge-logo">
-                <div class="singer-crest">962</div>
-                <div class="logo-text">MASON DI LEO <span>// SPEC</span></div>
+            <a href="#" class="broadcast-logo">
+                <div class="eye-logo">CBS</div>
+                <div class="network-title">SPORTS SPECIAL</div>
             </a>
             <nav>
-                <a href="#accolades">Accolades</a>
-                <a href="#experience">Track Record</a>
-                <a href="#projects">Engineering</a>
-                <a href="#specs">Specs</a>
+                <a href="#honors">Honors</a>
+                <a href="#playbook">Playbook</a>
+                <a href="#roster">Roster Specs</a>
             </nav>
         </div>
     </header>
 
     <main class="container">
 
-        <!-- Driver / Hero Cockpit -->
-        <section class="dashboard-hero">
-            <div class="driver-card">
-                <div class="driver-title">DRIVER PROFILE</div>
-                <h1 class="driver-name">Mason Di Leo</h1>
-                <p class="driver-bio">
-                    Business Administration & Information Systems student at Cal Poly SLO. Building Voice-First iOS Applications, modernizing digital tools, and driving growth through data-backed operations.
-                </p>
-                <div class="contact-bar">
-                    <a href="mailto:dileomason@gmail.com" class="contact-item">✉ dileomason@gmail.com</a>
-                    <span class="contact-item">📍 Los Altos, CA</span>
-                    <a href="https://linkedin.com/in/masondileo" target="_blank" class="contact-item">🔗 LinkedIn Profile</a>
-                </div>
-            </div>
+        <!-- Matchup Title Card (Hero) -->
+        <section class="matchup-hero">
+            <div class="live-tag">LIVE FROM SAN LUIS OBISPO, CA</div>
+            <h1 class="matchup-title">MASON DI LEO</h1>
+            <div class="sub-header-banner">BUSINESS ADMINISTRATION & INFORMATION SYSTEMS</div>
+            
+            <p style="font-size: 1.3rem; max-width: 800px; margin: 0 auto; color: var(--retro-cream);">
+                Sophomore at Cal Poly SLO[cite: 1]. Founder & iOS Developer turning spoken thoughts into actionable app prompts[cite: 1, 2]. Former Social Media Operations Manager who scaled NBA.Downtown to 160K followers[cite: 1, 2].
+            </p>
 
-            <div class="telemetry-cluster">
-                <div class="gauge">
-                    <div class="gauge-value">4.0</div>
-                    <div class="gauge-label">Major GPA (Cal Poly)</div>
+            <div class="stats-ticker-bar">
+                <div class="stat-box">
+                    <div class="stat-number">4.0</div>
+                    <div class="stat-label">MAJOR GPA[cite: 1]</div>
                 </div>
-                <div class="gauge">
-                    <div class="gauge-value">160K</div>
-                    <div class="gauge-label">Audience Scaled (IG)</div>
+                <div class="stat-box">
+                    <div class="stat-number">3.85</div>
+                    <div class="stat-label">CUMULATIVE GPA[cite: 1]</div>
                 </div>
-                <div class="gauge">
-                    <div class="gauge-value">3.85</div>
-                    <div class="gauge-label">Cumulative GPA</div>
+                <div class="stat-box">
+                    <div class="stat-number">160K</div>
+                    <div class="stat-label">INSTAGRAM AUDIENCE SCALED[cite: 1, 2]</div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Accolades & Honors Section -->
-        <section id="accolades">
-            <div class="section-header">
-                <div class="section-title">Accolades & Honors</div>
-                <div class="section-tag">VERIFIED ACHIEVEMENTS</div>
-            </div>
-
-            <div class="accolades-grid">
-                <div class="accolade-card">
-                    <div class="accolade-icon">🏆</div>
-                    <div class="accolade-title">Board of Directors Community Service Award</div>
-                    <div class="accolade-sub">Official Honor Award</div>
-                </div>
-                <div class="accolade-card">
-                    <div class="accolade-icon">🎗️</div>
-                    <div class="accolade-title">Business Honors Award</div>
-                    <div class="accolade-sub">Academic Distinction</div>
-                </div>
-                <div class="accolade-card">
-                    <div class="accolade-icon">🏅</div>
-                    <div class="accolade-title">Green and White Award</div>
-                    <div class="accolade-sub">Institutional Honor</div>
-                </div>
-                <div class="accolade-card">
-                    <div class="accolade-icon">📜</div>
-                    <div class="accolade-title">Dean's List</div>
-                    <div class="accolade-sub">Academic Excellence</div>
+                <div class="stat-box">
+                    <div class="stat-number">2029</div>
+                    <div class="stat-label">GRADUATION YEAR[cite: 1, 2]</div>
                 </div>
             </div>
         </section>
 
-        <!-- Professional Track Record (Experience) -->
-        <section id="experience">
-            <div class="section-header">
-                <div class="section-title">Track Record</div>
-                <div class="section-tag">PROFESSIONAL EXPERIENCE</div>
+        <!-- Honors & Accolades Section -->
+        <section id="honors">
+            <div class="broadcast-section-title">
+                <span>OFFICIAL TROPHY CASE</span>
+                <span style="font-size: 1.2rem;">HONORS & AWARDS</span>
             </div>
 
-            <div class="selector-controls">
-                <button class="mode-btn active" onclick="filterExp('all', this)">All Telemetry</button>
-                <button class="mode-btn" onclick="filterExp('dev', this)">Dev & Product</button>
-                <button class="mode-btn" onclick="filterExp('ops', this)">Ops & Growth</button>
+            <div class="honors-grid">
+                <div class="honor-card">
+                    <h3>BOARD OF DIRECTORS AWARD</h3>
+                    <p>Community Service Award[cite: 2]</p>
+                </div>
+                <div class="honor-card">
+                    <h3>BUSINESS HONORS AWARD</h3>
+                    <p>Cal Poly Academic Distinction[cite: 2]</p>
+                </div>
+                <div class="honor-card">
+                    <h3>GREEN AND WHITE AWARD</h3>
+                    <p>Institutional Excellence Award[cite: 2]</p>
+                </div>
+                <div class="honor-card">
+                    <h3>DEAN'S LIST</h3>
+                    <p>Academic Honors[cite: 2]</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Playbook Section -->
+        <section id="playbook">
+            <div class="broadcast-section-title">
+                <span>THE PLAYBOOK</span>
+                <span style="font-size: 1.2rem;">CAREER TELEMETRY</span>
             </div>
 
-            <div class="experience-stack">
+            <div class="schedule-controls">
+                <button class="channel-btn active" onclick="filterPlay('all', this)">ALL PLAYS</button>
+                <button class="channel-btn" onclick="filterPlay('dev', this)">APP DEV & PRODUCT</button>
+                <button class="channel-btn" onclick="filterPlay('ops', this)">OPERATIONS & LEADERSHIP</button>
+            </div>
+
+            <div class="playbook-stack">
 
                 <!-- Hold This Thought -->
-                <div class="track-card" data-category="dev">
-                    <div class="track-card-header">
+                <div class="play-card" data-category="dev">
+                    <div class="play-header">
                         <div>
-                            <div class="role-title">Founder & iOS Developer</div>
-                            <div class="company-name">Hold This Thought • Los Altos, CA</div>
+                            <div class="play-title">FOUNDER & iOS DEVELOPER</div>
+                            <div class="play-team">Hold This Thought — Los Altos, CA[cite: 1, 2]</div>
                         </div>
-                        <div class="time-badge">AUG 2026 — PRESENT</div>
+                        <div class="play-time">AUG 2026 — PRESENT[cite: 1, 2]</div>
                     </div>
-                    <ul class="bullet-list">
-                        <li>Developing a native iOS reminder app in Swift that turns spoken or typed thoughts into time, location, calendar, and event-aware prompts.</li>
-                        <li>Leading product direction, interface design, and iOS development while refining the voice-first experience based on early feedback.</li>
-                        <li>Built workflows for photo attachment, widgets, notifications, alarms, and saved locations.</li>
-                        <li>Conducted testing from initial concept through live iPhone demos.</li>
+                    <ul class="play-bullets">
+                        <li>Developing a native iOS reminder app in Swift that turns spoken or typed thoughts into time, location, calendar, and event-aware prompts[cite: 1].</li>
+                        <li>Leading product direction, interface design, and iOS development while refining the voice-first experience[cite: 2].</li>
+                        <li>Built workflows for photo attachment, widgets, notifications, alarms, and saved locations[cite: 1].</li>
+                        <li>Conducted testing from concept through live iPhone demos[cite: 1].</li>
                     </ul>
                 </div>
 
-                <!-- Cal Poly Instructional Assistant -->
-                <div class="track-card" data-category="ops">
-                    <div class="track-card-header">
+                <!-- Cal Poly Assistant -->
+                <div class="play-card" data-category="ops">
+                    <div class="play-header">
                         <div>
-                            <div class="role-title">Instructional Student Assistant — Statistics</div>
-                            <div class="company-name">California Polytechnic State University • San Luis Obispo, CA</div>
+                            <div class="play-title">INSTRUCTIONAL STUDENT ASSISTANT — STATISTICS</div>
+                            <div class="play-team">Cal Poly State University — San Luis Obispo, CA[cite: 1, 2]</div>
                         </div>
-                        <div class="time-badge">JAN 2026 — PRESENT</div>
+                        <div class="play-time">JAN 2026 — PRESENT[cite: 1, 2]</div>
                     </div>
-                    <ul class="bullet-list">
-                        <li>Tutor 80+ undergraduate students by explaining statistical concepts and guiding problem-solving.</li>
-                        <li>Support faculty with instructional delivery, assisting with course materials, classroom logistics, and student learning support.</li>
-                        <li>Grade assignments, labs, and quizzes with accuracy and consistency, maintaining digital records.</li>
-                        <li>Provide academic support by hosting weekly office hours.</li>
+                    <ul class="play-bullets">
+                        <li>Tutor 80+ undergraduate students by explaining statistical concepts and guiding problem-solving[cite: 1].</li>
+                        <li>Support faculty with instructional delivery, assisting with course materials and classroom logistics[cite: 2].</li>
+                        <li>Grade 6 weekly assignments, labs, and quizzes with digital accuracy[cite: 1, 2].</li>
+                        <li>Host weekly office hours to answer questions and clarify statistics concepts[cite: 1, 2].</li>
                     </ul>
                 </div>
 
                 <!-- Shockproof Training -->
-                <div class="track-card" data-category="dev">
-                    <div class="track-card-header">
+                <div class="play-card" data-category="dev">
+                    <div class="play-header">
                         <div>
-                            <div class="role-title">Product Innovation Intern</div>
-                            <div class="company-name">Shockproof Training</div>
+                            <div class="play-title">PRODUCT INNOVATION INTERN</div>
+                            <div class="play-team">Shockproof Training[cite: 1, 2]</div>
                         </div>
-                        <div class="time-badge">JUN 2025 — SEP 2025</div>
+                        <div class="play-time">JUN 2025 — SEP 2025[cite: 1, 2]</div>
                     </div>
-                    <ul class="bullet-list">
-                        <li>Collaborated directly with CEO to modernize, improve, and relaunch an older digital compliance training module.</li>
-                        <li>Redesigned 2 product training modules with brand new features and user interface to enhance usability and customer engagement.</li>
-                        <li>Developed and presented a product pitch to the company board on AI integration.</li>
-                        <li>Collaborated with a small intern team to share ideas, solve problems, and move the product forward.</li>
+                    <ul class="play-bullets">
+                        <li>Collaborated directly with CEO to modernize and relaunch digital compliance training modules[cite: 1, 2].</li>
+                        <li>Redesigned 2 product training modules with brand new features and user interface[cite: 1, 2].</li>
+                        <li>Developed and presented a product pitch to the company board on AI integration[cite: 1].</li>
+                        <li>Collaborated with an intern team to share ideas and solve product challenges[cite: 2].</li>
                     </ul>
                 </div>
 
                 <!-- NBA.Downtown -->
-                <div class="track-card" data-category="ops">
-                    <div class="track-card-header">
+                <div class="play-card" data-category="ops">
+                    <div class="play-header">
                         <div>
-                            <div class="role-title">Operations Manager</div>
-                            <div class="company-name">NBA.Downtown (Social Media Brand)</div>
+                            <div class="play-title">OPERATIONS MANAGER</div>
+                            <div class="play-team">NBA.Downtown (Social Media Brand)[cite: 1, 2]</div>
                         </div>
-                        <div class="time-badge">JUN 2021 — SEP 2024</div>
+                        <div class="play-time">JUN 2021 — SEP 2024[cite: 1, 2]</div>
                     </div>
-                    <ul class="bullet-list">
-                        <li>Grew and scaled Instagram following from 35K to 160K+ followers by optimizing a niche content strategy.</li>
-                        <li>Secured and negotiated high-value sponsorship deals with major brands including DraftKings and UFC through targeted outreach.</li>
-                        <li>Directed social media strategy and analytics, creating graphics and statistics featured in 10+ posts per week to boost reach and conversion.</li>
+                    <ul class="play-bullets">
+                        <li>Grew and scaled Instagram following from 35K to 160K+ followers by optimizing niche content strategy[cite: 1, 2].</li>
+                        <li>Secured high-value sponsorship deals with companies including DraftKings and UFC[cite: 1, 2].</li>
+                        <li>Created engaging environment with graphics and statistics featured in 10+ posts per week[cite: 1, 2].</li>
                     </ul>
                 </div>
 
                 <!-- Mason's Pool Cleaning -->
-                <div class="track-card" data-category="ops">
-                    <div class="track-card-header">
+                <div class="play-card" data-category="ops">
+                    <div class="play-header">
                         <div>
-                            <div class="role-title">Founder & Service Technician</div>
-                            <div class="company-name">Mason's Pool Cleaning</div>
+                            <div class="play-title">FOUNDER & SERVICE TECHNICIAN</div>
+                            <div class="play-team">Mason's Pool Cleaning[cite: 1, 2]</div>
                         </div>
-                        <div class="time-badge">JUN 2022 — SEP 2025</div>
+                        <div class="play-time">JUN 2022 — SEP 2025[cite: 1, 2]</div>
                     </div>
-                    <ul class="bullet-list">
-                        <li>Founded and scaled a profitable small business, demonstrating entrepreneurial drive and operational leadership.</li>
-                        <li>Diagnosed, repaired, and maintained complex swimming pool and water feature systems.</li>
-                        <li>Managed all financial operations, client relationship management, and monthly invoicing.</li>
+                    <ul class="play-bullets">
+                        <li>Founded and scaled a profitable small business, managing overall business operations and receivables[cite: 1, 2].</li>
+                        <li>Diagnosed and repaired complex swimming pool and water feature systems[cite: 1, 2].</li>
+                        <li>Delivered monthly invoices and managed client relationships[cite: 1, 2].</li>
                     </ul>
                 </div>
 
-                <!-- Golden Eagle Summer Sports Camp -->
-                <div class="track-card" data-category="ops">
-                    <div class="track-card-header">
+                <!-- Camp Counselor -->
+                <div class="play-card" data-category="ops">
+                    <div class="play-header">
                         <div>
-                            <div class="role-title">Camp Counselor</div>
-                            <div class="company-name">Golden Eagle Summer Sports Camp</div>
+                            <div class="play-title">CAMP COUNSELOR</div>
+                            <div class="play-team">Golden Eagle Summer Sports Camp[cite: 2]</div>
                         </div>
-                        <div class="time-badge">JUN 2024 — AUG 2024</div>
+                        <div class="play-time">JUN 2024 — AUG 2024[cite: 2]</div>
                     </div>
-                    <ul class="bullet-list">
-                        <li>Led groups of campers in daily sports and team-building activities, fostering collaboration and confidence.</li>
-                        <li>Communicated effectively with parents and staff to ensure safe, smooth operations.</li>
+                    <ul class="play-bullets">
+                        <li>Led groups of campers in daily sports and team-building activities, fostering collaboration[cite: 2].</li>
+                        <li>Communicated effectively with parents and staff to ensure safe operations[cite: 2].</li>
                     </ul>
                 </div>
 
             </div>
         </section>
 
-        <!-- Technical Specs & Education Grid -->
-        <section id="specs">
-            <div class="section-header">
-                <div class="section-title">Chassis Specs & Tuning</div>
-                <div class="section-tag">EDUCATION & SKILLS</div>
+        <!-- Roster Specifications (Education & Skills) -->
+        <section id="roster">
+            <div class="broadcast-section-title">
+                <span>TEAM ROSTER SPECS</span>
+                <span style="font-size: 1.2rem;">EDUCATION & SKILLS</span>
             </div>
 
             <div class="two-column">
 
-                <!-- Education Spec Box -->
-                <div class="spec-box">
-                    <h3 style="margin-bottom: 1rem; color: var(--porsche-gold); font-family: 'Space Mono', monospace;">ACADEMIC SPECIFICATIONS</h3>
-                    
-                    <div class="spec-row">
-                        <span class="spec-label">University</span>
-                        <span class="spec-value">Cal Poly SLO</span>
+                <!-- Education Card -->
+                <div class="teleprompter-box">
+                    <div class="prompter-header">ACADEMIC BROADCAST DATA</div>
+                    <div class="prompter-row">
+                        <span>UNIVERSITY:</span>
+                        <span>Cal Poly SLO[cite: 1, 2]</span>
                     </div>
-                    <div class="spec-row">
-                        <span class="spec-label">Degree</span>
-                        <span class="spec-value">B.S. Business Admin (IS)</span>
+                    <div class="prompter-row">
+                        <span>DEGREE:</span>
+                        <span>B.S. Business Admin (IS)[cite: 1, 2]</span>
                     </div>
-                    <div class="spec-row">
-                        <span class="spec-label">Expected Grad</span>
-                        <span class="spec-value">May 2029 (Sophomore)</span>
+                    <div class="prompter-row">
+                        <span>EXPECTED GRAD:</span>
+                        <span>2029 (Sophomore)[cite: 1, 2]</span>
                     </div>
-                    <div class="spec-row">
-                        <span class="spec-label">Cumulative GPA</span>
-                        <span class="spec-value" style="color: var(--singer-orange)">3.85</span>
+                    <div class="prompter-row">
+                        <span>CUMULATIVE GPA:</span>
+                        <span style="color: var(--madden-orange);">3.85[cite: 1]</span>
                     </div>
-                    <div class="spec-row">
-                        <span class="spec-label">Major GPA</span>
-                        <span class="spec-value" style="color: var(--singer-orange)">4.0</span>
+                    <div class="prompter-row">
+                        <span>MAJOR GPA:</span>
+                        <span style="color: var(--madden-orange);">4.0[cite: 1]</span>
                     </div>
-                    <div class="spec-row">
-                        <span class="spec-label">Coursework</span>
-                        <span class="spec-value">Business Law, Statistics, Financial & Managerial Accounting</span>
-                    </div>
-                    
-                    <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px dashed var(--border-line);">
-                        <div style="font-weight: 700; font-size: 0.9rem;">London School of Economics (LSE)</div>
-                        <div style="font-size: 0.85rem; color: var(--text-secondary);">Summer Coursework (June - July 2026): AI in Business: Machine Learning + Data Strategy</div>
+                    <div class="prompter-row">
+                        <span>COURSEWORK:</span>
+                        <span>Business Law, Stats, Accounting[cite: 1]</span>
                     </div>
 
-                    <div style="margin-top: 1rem; padding-top: 0.5rem;">
-                        <div style="font-weight: 700; font-size: 0.9rem;">Homestead High School</div>
-                        <div style="font-size: 0.85rem; color: var(--text-secondary);">(2021 - June 2025)</div>
+                    <div style="margin-top: 1rem; padding-top: 0.5rem; border-top: 2px dashed var(--cbs-blue);">
+                        <div style="font-family: 'Impact', sans-serif; font-size: 1.3rem;">LONDON SCHOOL OF ECONOMICS (LSE)[cite: 1, 2]</div>
+                        <div style="font-size: 1.1rem;">Summer Coursework (June–July 2026): AI in Business: Machine Learning + Data Strategy[cite: 1, 2]</div>
+                    </div>
+
+                    <div style="margin-top: 0.5rem;">
+                        <div style="font-family: 'Impact', sans-serif; font-size: 1.3rem;">HOMESTEAD HIGH SCHOOL[cite: 2]</div>
+                        <div style="font-size: 1.1rem;">(2021 — June 2025)[cite: 2]</div>
                     </div>
                 </div>
 
-                <!-- Skills & Interests Spec Box -->
-                <div class="spec-box">
-                    <h3 style="margin-bottom: 1rem; color: var(--porsche-gold); font-family: 'Space Mono', monospace;">EQUIPMENT & MODIFICATIONS</h3>
+                <!-- Skills & Certifications Card -->
+                <div class="teleprompter-box">
+                    <div class="prompter-header">EQUIPMENT & MODIFICATIONS</div>
 
-                    <div style="margin-bottom: 1.5rem;">
-                        <div class="spec-label" style="margin-bottom: 0.5rem;">TECHNICAL SKILLS</div>
-                        <div class="tag-cloud">
-                            <span class="tag-pill highlight">Swift (iOS)</span>
-                            <span class="tag-pill highlight">SQL</span>
-                            <span class="tag-pill highlight">Vibe Coding</span>
-                            <span class="tag-pill">Tableau</span>
-                            <span class="tag-pill">Microsoft Excel</span>
-                            <span class="tag-pill">PowerPoint</span>
-                            <span class="tag-pill">Microsoft Office</span>
-                            <span class="tag-pill">Canva</span>
+                    <div style="margin-bottom: 1rem;">
+                        <div style="font-weight: 700; font-size: 1.2rem;">TECHNICAL SKILLS</div>
+                        <div class="tag-group">
+                            <span class="badge-tag">Swift (iOS)</span>
+                            <span class="badge-tag">SQL</span>
+                            <span class="badge-tag">Vibe Coding</span>
+                            <span class="badge-tag">Tableau</span>
+                            <span class="badge-tag">Microsoft Excel</span>
+                            <span class="badge-tag">PowerPoint</span>
+                            <span class="badge-tag">Canva</span>
                         </div>
                     </div>
 
-                    <div style="margin-bottom: 1.5rem;">
-                        <div class="spec-label" style="margin-bottom: 0.5rem;">CERTIFICATIONS</div>
-                        <div class="tag-cloud">
-                            <span class="tag-pill">SQL Essential Training</span>
-                            <span class="tag-pill">Excel Essential Training (Microsoft 365)</span>
+                    <div style="margin-bottom: 1rem;">
+                        <div style="font-weight: 700; font-size: 1.2rem;">CERTIFICATIONS</div>
+                        <div class="tag-group">
+                            <span class="badge-tag">SQL Essential Training</span>
+                            <span class="badge-tag">Excel Essential Training (Microsoft 365)</span>
                         </div>
                     </div>
 
-                    <div style="margin-bottom: 1.5rem;">
-                        <div class="spec-label" style="margin-bottom: 0.5rem;">LEADERSHIP & SERVICE</div>
-                        <div style="font-size: 0.9rem;"><strong>AVID Tutoring Program — Peer Tutor</strong></div>
-                        <div style="font-size: 0.85rem; color: var(--text-secondary);">Aug 2023 – Jun 2025 | Provided support in math, science, English & foreign language to 30 students.</div>
+                    <div style="margin-bottom: 1rem;">
+                        <div style="font-weight: 700; font-size: 1.2rem;">LEADERSHIP</div>
+                        <div style="font-size: 1.1rem;"><strong>AVID Tutoring Program — Peer Tutor[cite: 1]</strong></div>
+                        <div style="font-size: 1rem;">Aug 2023 – Jun 2025 | Supported 30 students in math, science, English & foreign language[cite: 1].</div>
                     </div>
 
                     <div>
-                        <div class="spec-label" style="margin-bottom: 0.5rem;">PERSONAL INTERESTS</div>
-                        <div class="tag-cloud">
-                            <span class="tag-pill">Weightlifting</span>
-                            <span class="tag-pill">Baseball (SF Giants)</span>
-                            <span class="tag-pill highlight">Porsche 962</span>
-                            <span class="tag-pill highlight">1960s Ford GT40</span>
+                        <div style="font-weight: 700; font-size: 1.2rem;">INTERESTS</div>
+                        <div class="tag-group">
+                            <span class="badge-tag">Weightlifting</span>
+                            <span class="badge-tag">San Francisco Giants</span>
+                            <span class="badge-tag">Porsche 962</span>
+                            <span class="badge-tag">1960s Ford GT40</span>
                         </div>
                     </div>
                 </div>
@@ -782,24 +683,24 @@
             </div>
         </section>
 
-        <!-- Interactive Telemetry Drive Shift Switcher -->
-        <section class="shift-interactive">
-            <div style="font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--text-secondary);">INTERACTIVE GEARBOX</div>
-            <div class="gear-display" id="gearNum">1ST</div>
-            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;" id="gearDesc">Idle Telemetry: Ready for recruitment inspection.</p>
-            <button class="mode-btn" onclick="shiftGear()">Shift Drive Mode</button>
-        </section>
-
     </main>
 
+    <!-- Bottom Scoreboard Broadcast Ticker -->
+    <div class="bottom-ticker">
+        <div class="ticker-label">BREAKING UPDATE</div>
+        <div class="ticker-text" id="broadcastTicker">
+            MASON DI LEO // CURRENTLY DEVELOPING VOICE-FIRST IOS APP "HOLD THIS THOUGHT" // 4.0 MAJOR GPA AT CAL POLY SLO // OPEN TO RECRUITING OPPORTUNITIES...
+        </div>
+    </div>
+
     <script>
-        // Interactive Experience Filtering
-        function filterExp(category, btn) {
-            const buttons = document.querySelectorAll('.selector-controls .mode-btn');
+        // Interactive Playbook Filtering
+        function filterPlay(category, btn) {
+            const buttons = document.querySelectorAll('.schedule-controls .channel-btn');
             buttons.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
-            const cards = document.querySelectorAll('.track-card');
+            const cards = document.querySelectorAll('.play-card');
             cards.forEach(card => {
                 if (category === 'all' || card.getAttribute('data-category') === category) {
                     card.style.display = 'block';
@@ -809,20 +710,18 @@
             });
         }
 
-        // Gearbox Selector Simulation
-        const gears = [
-            { gear: "1ST", desc: "Launch Control: Baseline metrics & High GPA verified." },
-            { gear: "2ND", desc: "Mid-Speed Acceleration: Scaled 160K followers at NBA.Downtown." },
-            { gear: "3RD", desc: "High Performance: Product redesign & Board Pitch at Shockproof Training." },
-            { gear: "4TH", desc: "Top Gear: Native Swift iOS App development (Hold This Thought)." }
+        // Animated Scoreboard Text Updates
+        const tickerMessages = [
+            "MASON DI LEO // CURRENTLY DEVELOPING VOICE-FIRST IOS APP 'HOLD THIS THOUGHT' // 4.0 MAJOR GPA AT CAL POLY SLO...",
+            "RECRUITMENT SUMMARY // FORMER OPERATIONS MANAGER AT NBA.DOWNTOWN // SCALED INSTAGRAM AUDIENCE TO 160K FOLLOWERS...",
+            "ACADEMICS // COMPLETED LSE SUMMER PROGRAM IN AI IN BUSINESS: MACHINE LEARNING & DATA STRATEGY..."
         ];
-        let currentGearIndex = 0;
+        let msgIndex = 0;
 
-        function shiftGear() {
-            currentGearIndex = (currentGearIndex + 1) % gears.length;
-            document.getElementById('gearNum').innerText = gears[currentGearIndex].gear;
-            document.getElementById('gearDesc').innerText = gears[currentGearIndex].desc;
-        }
+        setInterval(() => {
+            msgIndex = (msgIndex + 1) % tickerMessages.length;
+            document.getElementById('broadcastTicker').innerText = tickerMessages[msgIndex];
+        }, 6000);
     </script>
 </body>
 </html>
